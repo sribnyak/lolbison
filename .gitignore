@@ -1,0 +1,10 @@
+.vscode/
+
+/build*/
+/cmake-build*/
+
+/location.hh
+/parser.cpp
+/parser.gv
+/parser.hh
+/scanner.cpp

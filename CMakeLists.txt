@@ -1,4 +1,9 @@
+cmake_minimum_required(VERSION 3.18)
 project(ParserExample)
+
+find_package(BISON)
+find_package(FLEX)
+
 set(
     HEADERS
     ${ParserExample_SOURCE_DIR}/driver.hh
