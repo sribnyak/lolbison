@@ -38,56 +38,17 @@
 // token name in variable
 %token
     END 0 "end of file"
-    ASSIGN ":="
-    MINUS "-"
-    PLUS "+"
-    STAR "*"
-    SLASH "/"
-    LPAREN "("
-    RPAREN ")"
-    SEMICOLON ";"
 ;
 
-%token <std::string> IDENTIFIER "identifier"
 %token <int> NUMBER "number"
-%nterm <int> exp
 
 // Prints output in parsing option for debugging location terminal
 %printer { yyo << $$; } <*>;
 
 %%
-%left "+" "-";
-%left "*" "/";
 
 %start unit;
-unit: assignments exp ";" { driver.result = $2; };
-
-assignments:
-    %empty {}
-    | assignments assignment {};
-
-assignment:
-    "identifier" ":=" exp ";" {
-        driver.variables[$1] = $3;
-        if (driver.location_debug) {
-            std::cerr << driver.location << std::endl;
-        }
-    }
-    | error ";" {
-    	// Hint for compilation error, resuming producing messages
-    	std::cerr << "You should provide assignment in the form: variable := expression ; " << std::endl;
-    };
-
-
-
-exp:
-    "number"
-    | "identifier" {$$ = driver.variables[$1];}
-    | exp "+" exp {$$ = $1 + $3; }
-    | exp "-" exp {$$ = $1 - $3; }
-    | exp "*" exp {$$ = $1 * $3; }
-    | exp "/" exp {$$ = $1 / $3; }
-    | "(" exp ")" {$$ = $2; };
+unit: "number" { driver.result = $1; };
 
 %%
 

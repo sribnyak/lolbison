@@ -2,6 +2,7 @@
 
 /build*/
 /cmake-build*/
+/.clang-format
 
 /location.hh
 /parser.cpp

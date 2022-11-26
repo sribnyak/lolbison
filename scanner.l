@@ -31,7 +31,6 @@
   }
 %}
 
-id    [a-zA-Z][a-zA-Z_0-9]*
 int   [0-9]+
 blank [ \t\r]
 
@@ -56,6 +55,7 @@ blank [ \t\r]
   }
 %}
 
+{int}      return make_NUMBER(yytext, loc);
 {blank}+   {
     if (driver.location_debug) {
         std::cerr << "Blank matched" << std::endl;
@@ -69,29 +69,9 @@ blank [ \t\r]
     loc.lines(yyleng);
     loc.step();
 }
+. throw yy::parser::syntax_error(loc, std::string("unknown token: ") + yytext);
+<<EOF>>    return yy::parser::make_END(loc);
 
-"-"        {
-              return yy::parser::make_MINUS  (loc);
-           }
-"+"        return yy::parser::make_PLUS   (loc);
-"*"        return yy::parser::make_STAR   (loc);
-"/"        return yy::parser::make_SLASH  (loc);
-"("        return yy::parser::make_LPAREN (loc);
-")"        return yy::parser::make_RPAREN (loc);
-":="       return yy::parser::make_ASSIGN (loc);
-";"        return yy::parser::make_SEMICOLON(loc);
-
-{int}      return make_NUMBER(yytext, loc);
-{id}       {
-                if (driver.location_debug) {
-                    std::cerr << "ID found " << yytext << std::endl;
-                }
-                return yy::parser::make_IDENTIFIER(yytext, loc);
-           }
-.          {
-                throw yy::parser::syntax_error(loc, "invalid character: " + std::string(yytext));
-           }
-<<EOF>>    return yy::parser::make_END (loc);
 %%
 
 yy::parser::symbol_type make_NUMBER(

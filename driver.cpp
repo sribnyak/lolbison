@@ -1,17 +1,12 @@
 #include "driver.hh"
 #include "parser.hh"
 
-
-
-Driver::Driver() :
-    trace_parsing(false),
-    trace_scanning(false),
-    location_debug(false),
-    scanner(*this), parser(scanner, *this) {
-    variables["one"] = 1;
-    variables["two"] = 2;
-}
-
+Driver::Driver()
+    : trace_parsing(false),
+      trace_scanning(false),
+      location_debug(false),
+      scanner(*this),
+      parser(scanner, *this) {}
 
 int Driver::parse(const std::string& f) {
     file = f;
@@ -26,18 +21,15 @@ int Driver::parse(const std::string& f) {
 
 void Driver::scan_begin() {
     scanner.set_debug(trace_scanning);
-  if (file.empty () || file == "-") {
-  } else {
-    stream.open(file);
-    std::cerr << "File name is " << file << std::endl;
+    if (!(file.empty() || file == "-")) {
+        stream.open(file);
+        std::cerr << "File name is " << file << std::endl;
 
-    // Restart scanner resetting buffer!
-    scanner.yyrestart(&stream);
-  }
+        // Restart scanner resetting buffer!
+        scanner.yyrestart(&stream);
+    }
 }
 
-void Driver::scan_end()
-{
+void Driver::scan_end() {
     stream.close();
 }
-
