@@ -53,6 +53,7 @@
     EXCLAMATION  "!"
     SMOOSH  "SMOOSH"
     MKAY    "MKAY"
+    VISIBLE "VISIBLE"
     AN      "AN"
     O       "O"
     RLY_QUESTION "RLY?"
@@ -97,7 +98,7 @@
 %%
 
 %start unit;
-unit: tokens "end of file" {
+unit: tokens {
     std::cout << "\"end of file\"" << std::endl;
     driver.result = 0;
 };
@@ -122,6 +123,7 @@ token:
     | "!" { std::cout << "\"!\"" << std::endl; }
     | "SMOOSH" { std::cout << "\"SMOOSH\"" << std::endl; }
     | "MKAY" { std::cout << "\"MKAY\"" << std::endl; }
+    | "VISIBLE" {std::cout << "\"VISIBLE\"" << std::endl; }
     | "AN" { std::cout << "\"AN\"" << std::endl; }
     | "O" { std::cout << "\"O\"" << std::endl; }
     | "RLY?" { std::cout << "\"RLY?\"" << std::endl; }
@@ -156,7 +158,7 @@ token:
     | "SMALLR" { std::cout << "\"SMALLR\"" << std::endl; }
     | "identifier" { std::cout << "\"identifier\"" << std::endl; }
     | "number" { std::cout << "\"number\"" << std::endl; }
-    | "str" { std::cout << "\"str\"" << std::endl; }
+    | "string" { std::cout << "\"string\"" << std::endl; }
     ;
 
 %%

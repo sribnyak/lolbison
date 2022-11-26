@@ -20,7 +20,8 @@ statement:
     | if_then
     | loop
     | "ENUF" eol /*break or exit*/
-    | expr eol;
+    | expr eol
+    | eol;
 
 var_decl:
     "I" "HAS" "A" identifier eol

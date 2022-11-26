@@ -1,6 +1,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <ostream>
 
 namespace ast {
 
@@ -30,9 +31,10 @@ class Program {
     std::vector<std::unique_ptr<Statement> > statements;
 };
 
-class Version {
-    int major;
-    int minor;
+class Version {  // not AST node, but data class
+    unsigned major;
+    unsigned minor;
+    friend std::ostream& operator<<(std::ostream&, Version); // for debug/logging
 };
 
 class Statement {
@@ -122,4 +124,4 @@ public:
 
 // TODO expressions
 
-}
+}  // namespace ast
