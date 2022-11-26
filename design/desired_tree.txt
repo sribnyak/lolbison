@@ -1,0 +1,127 @@
+Program(
+    version=Version(
+        major=1,
+        minor=2
+    ),
+    statements=[
+        VarDecl(
+            name="N",
+            value=Number(value=100)
+        ),
+        ArrayDecl(name="array"),
+        Loop(
+            name="loop",
+            head=IncrementLoopHead(
+                counter="index",
+                condition=LoopUntil(
+                    condition=BinaryOp(
+                        op=EQUAL,
+                        lhs=Identifier(name="index"),
+                        rhs=Identifier(name="N")
+                    )
+                )
+            ),
+            statements=[
+                ArrayNewIndex(
+                    array_name="array",
+                    index=Identifier(name="index"),
+                    value=Boolean(value=true)
+                )
+            ]
+        ), // check label after "im outta"!
+
+        ArrayAssign(
+            array_name="array",
+            index=Number(value=0),
+            value=Boolean(value=false)
+        ),
+        ArrayAssign(
+            array_name="array",
+            index=Number(value=1),
+            value=Boolean(value=false)
+        ),
+
+        Print(arguments=[
+            String(value="READY TO SURCH 4 YR PRIMES")
+        ]),
+
+        Loop(
+            name="loop",
+            head=IncrementLoopHead(
+                counter="step",
+                condition=LoopUntil(
+                    condition=BinaryOp(
+                        op=EQUAL,
+                        lhs=Identifier(name="step"),
+                        rhs=Identifier(name="N")
+                    )
+                )
+            ),
+            statements=[
+                ExprStatement(
+                    expression=ArrayAccess(
+                        array_name="array",
+                        index=Identifier(name="step")
+                    )
+                ),
+                IfThen(
+                    true_statements=[
+                        Print(arguments=[
+                            Identifier(name="step"),
+                            String(value=" IZ PRIME")
+                        ]),
+
+                        VarDecl(
+                            name="cumpound",
+                            value=BinaryOp(
+                                op=PRODUCT,
+                                lhs=Identifier(name="step"),
+                                rhs=Identifier(name="step")
+                            )
+                        ),
+                        Loop(
+                            name="inner_loop",
+                            head=null,
+                            statements=[
+                                ExprStatement(
+                                    expression=BinaryOp(
+                                        op=EQUAL,
+                                        lhs=Identifier(name="cumpound"),
+                                        rhs=BinaryOp(
+                                            op=MAX,
+                                            lhs=Identifier(name="cumpound"),
+                                            rhs=Identifier(name="N")
+                                        )
+                                    )
+                                ),
+                                IfThen(
+                                    true_statements=[Break()],
+                                    false_statements=[]
+                                ),
+                                ArrayAssign(
+                                    array_name="array",
+                                    index=Identifier(name="cumpound"),
+                                    value=Boolean(value=false)
+                                )
+                                VarAssign(
+                                    name="cumpound",
+                                    value=BinaryOp(
+                                        op=SUM,
+                                        lhs=Identifier(name="cumpound"),
+                                        rhs=Identifier(name="step")
+                                    )
+                                )
+                            ]
+                        )
+                    ],
+                    false_statements=[]
+                )
+            ]
+        ),
+
+        Print(arguments=[
+            String(value="FOUND ALL YR PRIMES SMALLR THAN "),
+            Identifier(name="N")
+        ])
+    ]
+)
