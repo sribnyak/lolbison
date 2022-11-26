@@ -32,7 +32,7 @@ array_decl: "I" "HAS" "A" identifier "ITZ" "A" "BUKKIT" eol;
 
 array_new_index: identifier "HAS" "A" "SRS" expr "ITZ" expr eol;
 
-array_assign: array_access R expr eol;
+array_assign: array_access "R" expr eol;
 
 array_access: identifier "'Z" "SRS" expr;  /* unusual keyword 'Z */
 
@@ -47,8 +47,8 @@ many_args:
     | many_args expr
     | many_args "AN" expr;
 
-if_then: "O" "RLY?" eol "YA RLY" eol statements "OIC" eol
-    | "O" "RLY?" eol "YA RLY" eol statements "NO" "WAI" eol statements "OIC" eol;
+if_then: "O" "RLY?" eol "YA" "RLY" eol statements "OIC" eol
+    | "O" "RLY?" eol "YA" "RLY" eol statements "NO" "WAI" eol statements "OIC" eol;
 
 loop:
     loop_enter loop_operation loop_condition eol statements loop_leave eol
@@ -56,7 +56,7 @@ loop:
 
 loop_enter: "IM" "IN" "YR" identifier;
 
-loop_operation: "UPPIN" "YR" identifier | "UPPIN" "YR" identifier;
+loop_operation: "UPPIN" "YR" identifier | "NERFIN" "YR" identifier;
 
 loop_condition:
     /* empty */
