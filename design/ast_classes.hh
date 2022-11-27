@@ -27,14 +27,8 @@ class ExprStatement;
 class Expression;
 
 class Program {
-    Version version;
+    std::string version;
     std::vector<std::unique_ptr<Statement> > statements;
-};
-
-class Version {  // not AST node, but data class
-    unsigned major;
-    unsigned minor;
-    friend std::ostream& operator<<(std::ostream&, Version); // for debug/logging
 };
 
 class Statement {

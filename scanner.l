@@ -119,7 +119,8 @@ BIGGR   return yy::parser::make_BIGGR(loc);
 SMALLR  return yy::parser::make_SMALLR(loc);
 \"\"    return yy::parser::make_STR("", loc); // TODO: support strings
 {id}    return yy::parser::make_IDENTIFIER(yytext, loc);
-{int}   return make_NUMBER(yytext, loc);
+-?{int} return make_NUMBER(yytext, loc);
+{int}\.{int}  return yy::parser::make_VERSION(yytext, loc);
 .       throw yy::parser::syntax_error(loc, std::string("invalid character: ") + yytext);
 <<EOF>> return yy::parser::make_END(loc);
 

@@ -1,8 +1,5 @@
 Program(
-    version=Version(
-        major=1,
-        minor=2
-    ),
+    version="1.2",
     statements=[
         VarDecl(
             name="N",

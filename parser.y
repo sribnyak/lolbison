@@ -90,6 +90,7 @@
 
 %token <std::string> IDENTIFIER "identifier"
 %token <int> NUMBER "number"
+%token <std::string> VERSION "version"
 %token <std::string> STR "string"
 
 // Prints output in parsing option for debugging location terminal
@@ -156,8 +157,9 @@ token:
     | "MOD" { std::cout << "\"MOD\"" << std::endl; }
     | "BIGGR" { std::cout << "\"BIGGR\"" << std::endl; }
     | "SMALLR" { std::cout << "\"SMALLR\"" << std::endl; }
-    | "identifier" { std::cout << "\"identifier\"" << std::endl; }
-    | "number" { std::cout << "\"number\"" << std::endl; }
+    | "identifier" { std::cout << "\"identifier " << $1 << "\"" << std::endl; }
+    | "number" { std::cout << "\"number " << $1 << "\"" << std::endl; }
+    | "version" { std::cout << "\"version " << $1 << "\"" << std::endl; }
     | "string" { std::cout << "\"string\"" << std::endl; }
     ;
 
