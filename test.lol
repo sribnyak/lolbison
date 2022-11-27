@@ -1,10 +1,12 @@
 HAI 1.2
     I HAS A N ITZ 100
-    VISIBLE N ""
+    VISIBLE "N = " N
 
     BOTH SAEM 154 AN -42
     O RLY?
         YA RLY
             ENUF
     OIC
+
+    VISIBLE "CHECK OUT THIS STRING:::)I LUV THIS STRING!"
 KTHXBYE

@@ -160,7 +160,7 @@ token:
     | "identifier" { std::cout << "\"identifier " << $1 << "\"" << std::endl; }
     | "number" { std::cout << "\"number " << $1 << "\"" << std::endl; }
     | "version" { std::cout << "\"version " << $1 << "\"" << std::endl; }
-    | "string" { std::cout << "\"string\"" << std::endl; }
+    | "string" { std::cout << "\"string " << $1 << "\"" << std::endl; }
     ;
 
 %%
