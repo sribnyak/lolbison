@@ -44,7 +44,7 @@ blank [ \t\r]
 
 %%
 
-  std::string parsed_str;
+  std::string parsed_string;
 
 %{
   // A handy shortcut to the location held by the driver.
@@ -120,23 +120,23 @@ blank [ \t\r]
 <INITIAL>MOD      return yy::parser::make_MOD(loc);
 <INITIAL>BIGGR    return yy::parser::make_BIGGR(loc);
 <INITIAL>SMALLR   return yy::parser::make_SMALLR(loc);
-<INITIAL>\"       parsed_str.clear(); BEGIN(str);
+<INITIAL>\"       parsed_string.clear(); BEGIN(str);
 <INITIAL>{id}     return yy::parser::make_IDENTIFIER(yytext, loc);
 <INITIAL>-?{int}  return make_NUMBER(yytext, loc);
 <INITIAL>{int}\.{int} return yy::parser::make_VERSION(yytext, loc);
 <INITIAL>.        throw yy::parser::syntax_error(loc, std::string("invalid character: ") + yytext);
 <INITIAL><<EOF>>  return yy::parser::make_END(loc);
 
-<str>:\)  parsed_str += '\n';
-<str>:>   parsed_str += '\t';
-<str>:o   parsed_str += '\a';  // beep
-<str>:\"  parsed_str += '"';
-<str>::   parsed_str += ':';
+<str>:\)  parsed_string += '\n';
+<str>:>   parsed_string += '\t';
+<str>:o   parsed_string += '\a';  // beep
+<str>:\"  parsed_string += '"';
+<str>::   parsed_string += ':';
 <str>:.   throw yy::parser::syntax_error(loc, std::string("unknown escape sequence: ") + yytext);
 <str>:    throw yy::parser::syntax_error(loc, "unterminated string constant");
 <str>\n   throw yy::parser::syntax_error(loc, "unterminated string constant");
-<str>\"   BEGIN(INITIAL); return yy::parser::make_STR(parsed_str, loc);
-<str>[^:\n\"]+  parsed_str += yytext;
+<str>\"   BEGIN(INITIAL); return yy::parser::make_STRING(parsed_string, loc);
+<str>[^:\n\"]+  parsed_string += yytext;
 <str><<EOF>>    throw yy::parser::syntax_error(loc, "unterminated string constant");
 
 %%

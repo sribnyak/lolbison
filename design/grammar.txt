@@ -33,7 +33,7 @@ array_decl: "I" "HAS" "A" identifier "ITZ" "A" "BUKKIT" eol;
 
 array_new_index: identifier "HAS" "A" "SRS" expr "ITZ" expr eol;
 
-array_assign: array_access "R" expr eol;
+array_assign: identifier "'Z" "SRS" expr "R" expr eol;
 
 array_access: identifier "'Z" "SRS" expr;  /* unusual keyword 'Z */
 
@@ -68,18 +68,18 @@ loop_leave: "IM" "OUTTA" "YR" identifier;
 
 expr:
     number
-    | str
+    | string
     | boolean
     | "IT"
     | identifier
-    | unary_op
+    | logical_not
     | binary_op
     | array_access
     | join;
 
 boolean: "WIN" | "FAIL";
 
-unary_op: "NOT" expr;
+logical_not: "NOT" expr;
 
 binary_op:
     binary_op_name expr "AN" expr
@@ -105,8 +105,8 @@ math_func:
 
 /* Lexer part */
 
-eol: '\n'
+eol: \n+
 number: num | -num
 version: num.num
 identifier: [a-zA-Z][a-zA-Z0-9_]*
-str: "..."
+string: "..."

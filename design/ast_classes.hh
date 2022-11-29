@@ -3,10 +3,8 @@
 #include <vector>
 #include <ostream>
 
-namespace ast {
-
+class AstNode;
 class Program;
-class Version;
 class Statement;
 class VarDecl;
 class VarAssign;
@@ -25,13 +23,40 @@ class LoopUntil;
 class Break;
 class ExprStatement;
 class Expression;
+class Number;
+class String;
+class Boolean;
+class It;
+class Identifier;
+class LogicalNot;
+class BinaryOp;
+class ArrayAccess;
+class Join;
+class BinarySum;
+class BinarySub;
+class BinaryMul;
+class BinaryDiv;
+class BinaryMod;
+class BinaryMax;
+class BinaryMin;
+class BinaryEq;
+class BinaryNeq;
+class BinaryAnd;
+class BinaryOr;
+class BinaryXor;
 
-class Program {
+class AstNode {
+public:
+    virtual ~AstNode() {}
+    virtual void print(std::ostream& out, int indent) const = 0;
+};
+
+class Program : public AstNode {
     std::string version;
     std::vector<std::unique_ptr<Statement> > statements;
 };
 
-class Statement {
+class Statement : public AstNode {
 public:
     virtual ~Statement() {}
 };
@@ -64,6 +89,7 @@ class ArrayAssign : public Statement {
 
 class Print : public Statement {
     std::vector<std::unique_ptr<Expression> > arguments;
+    bool suppress_newline;
 };
 
 class IfThen : public Statement {
@@ -77,33 +103,28 @@ class Loop : public Statement {
     std::vector<std::unique_ptr<Statement> > statements;
 };
 
-class LoopHead {
+class LoopHead : public AstNode {
+    std::string counter;
+    std::unique_ptr<LoopCondition> condition;
+
 public:
     virtual ~LoopHead() {}
 };
 
-class IncrementLoopHead : public LoopHead {
-    std::string counter;
-    std::unique_ptr<LoopCondition> condition;
-};
+class IncrementLoopHead : public LoopHead {};
 
-class DecrementLoopHead : public LoopHead {
-    std::string counter;
-    std::unique_ptr<LoopCondition> condition;
-};
+class DecrementLoopHead : public LoopHead {};
 
-class LoopCondition {
+class LoopCondition : public AstNode {
+    std::unique_ptr<Expression> condition;
+
 public:
     virtual ~LoopCondition() {}
 };
 
-class LoopWhile : public LoopCondition {
-    std::unique_ptr<Expression> condition;
-};
+class LoopWhile : public LoopCondition {};
 
-class LoopUntil : public LoopCondition {
-    std::unique_ptr<Expression> condition;
-};
+class LoopUntil : public LoopCondition {};
 
 class Break : public Statement {};
 
@@ -111,11 +132,59 @@ class ExprStatement : public Statement {
     std::unique_ptr<Expression> expression;
 };
 
-class Expression {
+class Expression : public AstNode {
 public:
     virtual ~Expression() {}
 };
 
-// TODO expressions
+class Number : public Expression {
+    int value;
+};
 
-}  // namespace ast
+class String : public Expression {
+    std::string value;
+};
+
+class Boolean : public Expression {
+    bool value;
+};
+
+class It : public Expression {};
+
+class Identifier : public Expression {
+    std::string name;
+};
+
+class LogicalNot : public Expression {
+    std::unique_ptr<Expression> operand;
+};
+
+class BinaryOp : public Expression {
+    std::unique_ptr<Expression> lhs;
+    std::unique_ptr<Expression> rhs;
+
+public:
+    virtual ~BinaryOp() {}
+};
+
+class ArrayAccess : public Expression {
+    std::string array_name;
+    std::unique_ptr<Expression> index;
+};
+
+class Join : public Expression {
+    std::vector<std::unique_ptr<Expression> > arguments;
+};
+
+class BinarySum : public BinaryOp {};
+class BinarySub : public BinaryOp {};
+class BinaryMul : public BinaryOp {};
+class BinaryDiv : public BinaryOp {};
+class BinaryMod : public BinaryOp {};
+class BinaryMax : public BinaryOp {};
+class BinaryMin : public BinaryOp {};
+class BinaryEq : public BinaryOp {};
+class BinaryNeq : public BinaryOp {};
+class BinaryAnd : public BinaryOp {};
+class BinaryOr : public BinaryOp {};
+class BinaryXor : public BinaryOp {};

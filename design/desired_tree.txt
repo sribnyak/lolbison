@@ -11,8 +11,7 @@ Program(
             head=IncrementLoopHead(
                 counter="index",
                 condition=LoopUntil(
-                    condition=BinaryOp(
-                        op=EQUAL,
+                    condition=BinaryEqual(
                         lhs=Identifier(name="index"),
                         rhs=Identifier(name="N")
                     )
@@ -38,17 +37,19 @@ Program(
             value=Boolean(value=false)
         ),
 
-        Print(arguments=[
-            String(value="READY TO SURCH 4 YR PRIMES")
-        ]),
+        Print(
+            arguments=[
+                String(value="READY TO SURCH 4 YR PRIMES")
+            ],
+            suppress_newline=false
+        ),
 
         Loop(
             name="loop",
             head=IncrementLoopHead(
                 counter="step",
                 condition=LoopUntil(
-                    condition=BinaryOp(
-                        op=EQUAL,
+                    condition=BinaryEqual(
                         lhs=Identifier(name="step"),
                         rhs=Identifier(name="N")
                     )
@@ -63,15 +64,17 @@ Program(
                 ),
                 IfThen(
                     true_statements=[
-                        Print(arguments=[
-                            Identifier(name="step"),
-                            String(value=" IZ PRIME")
-                        ]),
+                        Print(
+                            arguments=[
+                                Identifier(name="step"),
+                                String(value=" IZ PRIME")
+                            ],
+                            suppress_newline=false
+                        ),
 
                         VarDecl(
                             name="cumpound",
-                            value=BinaryOp(
-                                op=PRODUCT,
+                            value=BinaryProduct(
                                 lhs=Identifier(name="step"),
                                 rhs=Identifier(name="step")
                             )
@@ -81,11 +84,9 @@ Program(
                             head=null,
                             statements=[
                                 ExprStatement(
-                                    expression=BinaryOp(
-                                        op=EQUAL,
+                                    expression=BinaryEqual(
                                         lhs=Identifier(name="cumpound"),
-                                        rhs=BinaryOp(
-                                            op=MAX,
+                                        rhs=BinaryMax(
                                             lhs=Identifier(name="cumpound"),
                                             rhs=Identifier(name="N")
                                         )
@@ -102,8 +103,7 @@ Program(
                                 )
                                 VarAssign(
                                     name="cumpound",
-                                    value=BinaryOp(
-                                        op=SUM,
+                                    value=BinarySum(
                                         lhs=Identifier(name="cumpound"),
                                         rhs=Identifier(name="step")
                                     )
@@ -116,9 +116,12 @@ Program(
             ]
         ),
 
-        Print(arguments=[
-            String(value="FOUND ALL YR PRIMES SMALLR THAN "),
-            Identifier(name="N")
-        ])
+        Print(
+            arguments=[
+                String(value="FOUND ALL YR PRIMES SMALLR THAN "),
+                Identifier(name="N")
+            ],
+            suppress_newline=false
+        )
     ]
 )

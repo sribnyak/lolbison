@@ -91,7 +91,7 @@
 %token <std::string> IDENTIFIER "identifier"
 %token <int> NUMBER "number"
 %token <std::string> VERSION "version"
-%token <std::string> STR "string"
+%token <std::string> STRING "string"
 
 // Prints output in parsing option for debugging location terminal
 %printer { yyo << $$; } <*>;
