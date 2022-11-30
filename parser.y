@@ -8,9 +8,9 @@
 
 %code requires {
     #include <string>
-    /* Forward declaration of classes in order to disable cyclic dependencies */
     class Scanner;
     class Driver;
+    #include "ast_forward_declarations.h"
 }
 
 
@@ -20,6 +20,8 @@
 %code {
     #include "driver.hh"
     #include "location.hh"
+
+    #include "ast.h"
 
     /* Redefine parser to use our function from scanner */
     static yy::parser::symbol_type yylex(Scanner &scanner) {

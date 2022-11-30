@@ -23,9 +23,9 @@ class LoopUntil;
 class Break;
 class ExprStatement;
 class Expression;
-class Number;
-class String;
-class Boolean;
+class NumberLiteral;
+class StringLiteral;
+class BooleanLiteral;
 class It;
 class Identifier;
 class LogicalNot;
@@ -137,15 +137,15 @@ public:
     virtual ~Expression() {}
 };
 
-class Number : public Expression {
+class NumberLiteral : public Expression {
     int value;
 };
 
-class String : public Expression {
+class StringLiteral : public Expression {
     std::string value;
 };
 
-class Boolean : public Expression {
+class BooleanLiteral : public Expression {
     bool value;
 };
 
