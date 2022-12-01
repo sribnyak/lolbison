@@ -7,7 +7,9 @@
 %define parse.assert
 
 %code requires {
+    #include <memory>
     #include <string>
+    #include <vector>
     class Scanner;
     class Driver;
     #include "ast_forward_declarations.h"
@@ -105,7 +107,9 @@
 %start program;
 
 program: empty_lines "HAI" VERSION EOL statements "KTHXBYE" empty_lines {
-    std::cout << "\"end of file\"" << std::endl;
+    Program($3, std::vector<std::unique_ptr<Statement> >()).print(std::cout, 3);
+    //Program($3, $5).print(std::cout, 0);
+    std::cout << std::endl;
     driver.result = 0;
 };
 

@@ -22,7 +22,7 @@ Program(
                     array_name="array",
                     index=Identifier(name="index"),
                     value=Boolean(value=true)
-                )
+                ),
             ]
         ), // check label after "im outta"!
 
@@ -39,7 +39,7 @@ Program(
 
         Print(
             arguments=[
-                String(value="READY TO SURCH 4 YR PRIMES")
+                String(value="READY TO SURCH 4 YR PRIMES"),
             ],
             suppress_newline=false
         ),
@@ -67,7 +67,7 @@ Program(
                         Print(
                             arguments=[
                                 Identifier(name="step"),
-                                String(value=" IZ PRIME")
+                                String(value=" IZ PRIME"),
                             ],
                             suppress_newline=false
                         ),
@@ -93,8 +93,11 @@ Program(
                                     )
                                 ),
                                 IfThen(
-                                    true_statements=[Break()],
-                                    false_statements=[]
+                                    true_statements=[
+                                        Break(),
+                                    ],
+                                    false_statements=[
+                                    ]
                                 ),
                                 ArrayAssign(
                                     array_name="array",
@@ -107,21 +110,22 @@ Program(
                                         lhs=Identifier(name="cumpound"),
                                         rhs=Identifier(name="step")
                                     )
-                                )
+                                ),
                             ]
-                        )
+                        ),
                     ],
-                    false_statements=[]
-                )
+                    false_statements=[
+                    ]
+                ),
             ]
         ),
 
         Print(
             arguments=[
                 String(value="FOUND ALL YR PRIMES SMALLR THAN "),
-                Identifier(name="N")
+                Identifier(name="N"),
             ],
             suppress_newline=false
-        )
+        ),
     ]
 )

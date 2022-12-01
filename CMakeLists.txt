@@ -31,5 +31,6 @@ add_executable(
     driver.cpp
     ${BISON_MyParser_OUTPUTS}
     ${FLEX_MyScanner_OUTPUTS}
+    Program.cpp
 )
 target_include_directories(lolbison PRIVATE ${Lolbison_SOURCE_DIR})

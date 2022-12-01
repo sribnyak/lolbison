@@ -3,9 +3,10 @@
 
 #include <ostream>
 
+const int INDENT_WIDTH = 4;
+
 class AstNode {
 public:
-    virtual ~AstNode() {}
     virtual void print(std::ostream& out, int indent) const = 0;
 };
 
