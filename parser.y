@@ -98,17 +98,21 @@
 %token <int> NUMBER "number"
 %token <std::string> VERSION "version"
 %token <std::string> STRING "string"
+%nterm <std::vector<std::unique_ptr<Statement>>> statements
+%nterm <std::unique_ptr<Statement>> statement
+%nterm <std::unique_ptr<VarDecl>> var_decl
+%nterm <std::unique_ptr<VarAssign>> var_assign
+%nterm <std::unique_ptr<Expression>> expr
 
 // Prints output in parsing option for debugging location terminal
-%printer { yyo << $$; } <*>;
+// %printer { yyo << $$; } <*>;
 
 %%
 
 %start program;
 
 program: empty_lines "HAI" VERSION EOL statements "KTHXBYE" empty_lines {
-    Program($3, std::vector<std::unique_ptr<Statement> >()).print(std::cout, 3);
-    //Program($3, $5).print(std::cout, 0);
+    Program($3, std::move($5)).print(std::cout, 0);
     std::cout << std::endl;
     driver.result = 0;
 };
@@ -118,29 +122,30 @@ empty_lines:
     | empty_lines EOL;
 
 statements:
-    %empty { do_something(0); }
-    | statements statement { do_something(1); }
+    %empty {}
+    | statements statement { $$ = std::move($1); $$.push_back(std::move($2)); }
     ;
 
 statement:
-    var_decl
-    | var_assign
-    | array_decl
-    | array_new_index
-    | array_assign
-    | print
-    | if_then
-    | loop
-    | "ENUF" EOL  { do_something(2); }
-    | expr EOL  { do_something(3); }
-    | EOL;
-
-var_decl:
-    "I" "HAS" "A" IDENTIFIER EOL { do_something(4); }
-    | "I" "HAS" "A" IDENTIFIER "ITZ" expr EOL { do_something(5); }
+    var_decl { $$ = std::move($1); }
+    | var_assign { $$ = std::move($1); }
+    | array_decl {}
+    | array_new_index {}
+    | array_assign {}
+    | print {}
+    | if_then {}
+    | loop {}
+    | "ENUF" EOL {}
+    | expr EOL { $$ = std::make_unique<ExprStatement>(std::move($1)); }
+    | EOL {}
     ;
 
-var_assign: IDENTIFIER "R" expr EOL { do_something(6); };
+var_decl:
+    "I" "HAS" "A" IDENTIFIER EOL { $$ = std::make_unique<VarDecl>($4); }
+    | "I" "HAS" "A" IDENTIFIER "ITZ" expr EOL { $$ = std::make_unique<VarDecl>($4, std::move($6)); }
+    ;
+
+var_assign: IDENTIFIER "R" expr EOL { $$ = std::make_unique<VarAssign>($1, std::move($3)); };
 
 array_decl: "I" "HAS" "A" IDENTIFIER "ITZ" "A" "BUKKIT" EOL { do_something(7); };
 
@@ -182,15 +187,15 @@ loop_condition:
     ;
 
 expr:
-    NUMBER { do_something(18); }
-    | STRING { do_something(19); }
-    | boolean
-    | "IT" { do_something(18); }
-    | IDENTIFIER { do_something(20); }
-    | logical_not
-    | binary_op
-    | array_access
-    | join
+    NUMBER { $$ = std::make_unique<NumberLiteral>($1); }
+    | STRING { $$ = std::make_unique<StringLiteral>($1); }
+    | boolean {}
+    | "IT" {}
+    | IDENTIFIER {}
+    | logical_not {}
+    | binary_op {}
+    | array_access {}
+    | join {}
     ;
 
 boolean: "WIN" { do_something(21); }

@@ -3,7 +3,7 @@ Program(
     statements=[
         VarDecl(
             name="N",
-            value=Number(value=100)
+            value=NumberLiteral(value=100)
         ),
         ArrayDecl(name="array"),
         Loop(
@@ -21,25 +21,25 @@ Program(
                 ArrayNewIndex(
                     array_name="array",
                     index=Identifier(name="index"),
-                    value=Boolean(value=true)
+                    value=BooleanLiteral(value=true)
                 ),
             ]
         ), // check label after "im outta"!
 
         ArrayAssign(
             array_name="array",
-            index=Number(value=0),
-            value=Boolean(value=false)
+            index=NumberLiteral(value=0),
+            value=BooleanLiteral(value=false)
         ),
         ArrayAssign(
             array_name="array",
-            index=Number(value=1),
-            value=Boolean(value=false)
+            index=NumberLiteral(value=1),
+            value=BooleanLiteral(value=false)
         ),
 
         Print(
             arguments=[
-                String(value="READY TO SURCH 4 YR PRIMES"),
+                StringLiteral(value="READY TO SURCH 4 YR PRIMES"),
             ],
             suppress_newline=false
         ),
@@ -67,7 +67,7 @@ Program(
                         Print(
                             arguments=[
                                 Identifier(name="step"),
-                                String(value=" IZ PRIME"),
+                                StringLiteral(value=" IZ PRIME"),
                             ],
                             suppress_newline=false
                         ),
@@ -102,7 +102,7 @@ Program(
                                 ArrayAssign(
                                     array_name="array",
                                     index=Identifier(name="cumpound"),
-                                    value=Boolean(value=false)
+                                    value=BooleanLiteral(value=false)
                                 )
                                 VarAssign(
                                     name="cumpound",
@@ -122,7 +122,7 @@ Program(
 
         Print(
             arguments=[
-                String(value="FOUND ALL YR PRIMES SMALLR THAN "),
+                StringLiteral(value="FOUND ALL YR PRIMES SMALLR THAN "),
                 Identifier(name="N"),
             ],
             suppress_newline=false

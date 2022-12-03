@@ -53,7 +53,7 @@ public:
 
 class Program : public AstNode {
     std::string version;
-    std::vector<std::unique_ptr<Statement> > statements;
+    std::vector<std::unique_ptr<Statement>> statements;
 };
 
 class Statement : public AstNode {
@@ -88,19 +88,19 @@ class ArrayAssign : public Statement {
 };
 
 class Print : public Statement {
-    std::vector<std::unique_ptr<Expression> > arguments;
+    std::vector<std::unique_ptr<Expression>> arguments;
     bool suppress_newline;
 };
 
 class IfThen : public Statement {
-    std::vector<std::unique_ptr<Statement> > true_statements;
-    std::vector<std::unique_ptr<Statement> > false_statements;
+    std::vector<std::unique_ptr<Statement>> true_statements;
+    std::vector<std::unique_ptr<Statement>> false_statements;
 };
 
 class Loop : public Statement {
     std::string name;
     std::unique_ptr<LoopHead> head;
-    std::vector<std::unique_ptr<Statement> > statements;
+    std::vector<std::unique_ptr<Statement>> statements;
 };
 
 class LoopHead : public AstNode {
@@ -173,7 +173,7 @@ class ArrayAccess : public Expression {
 };
 
 class Join : public Expression {
-    std::vector<std::unique_ptr<Expression> > arguments;
+    std::vector<std::unique_ptr<Expression>> arguments;
 };
 
 class BinarySum : public BinaryOp {};

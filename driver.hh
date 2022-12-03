@@ -3,6 +3,7 @@
 #include <map>
 #include <string>
 #include <fstream>
+#include "ast.h"
 #include "scanner.h"
 #include "parser.hh"
 

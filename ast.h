@@ -5,6 +5,7 @@
 #include "expressions/StringLiteral.h"
 #include "statements/VarDecl.h"
 #include "statements/VarAssign.h"
+#include "statements/ExprStatement.h"
 #include "Program.h"
 #include "AstNode.h"
 
