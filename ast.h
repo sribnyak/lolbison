@@ -3,9 +3,13 @@
 
 #include "expressions/NumberLiteral.h"
 #include "expressions/StringLiteral.h"
-#include "statements/VarDecl.h"
-#include "statements/VarAssign.h"
+#include "statements/ArrayAssign.h"
+#include "statements/ArrayDecl.h"
+#include "statements/ArrayNewIndex.h"
+#include "statements/Break.h"
 #include "statements/ExprStatement.h"
+#include "statements/VarAssign.h"
+#include "statements/VarDecl.h"
 #include "Program.h"
 #include "AstNode.h"
 

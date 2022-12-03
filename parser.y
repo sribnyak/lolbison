@@ -102,6 +102,9 @@
 %nterm <std::unique_ptr<Statement>> statement
 %nterm <std::unique_ptr<VarDecl>> var_decl
 %nterm <std::unique_ptr<VarAssign>> var_assign
+%nterm <std::unique_ptr<ArrayDecl>> array_decl
+%nterm <std::unique_ptr<ArrayNewIndex>> array_new_index
+%nterm <std::unique_ptr<ArrayAssign>> array_assign
 %nterm <std::unique_ptr<Expression>> expr
 
 // Prints output in parsing option for debugging location terminal
@@ -123,19 +126,21 @@ empty_lines:
 
 statements:
     %empty {}
-    | statements statement { $$ = std::move($1); $$.push_back(std::move($2)); }
-    ;
+    | statements statement {
+        $$ = std::move($1);
+        if ($2) { $$.push_back(std::move($2)); }
+    };
 
 statement:
     var_decl { $$ = std::move($1); }
     | var_assign { $$ = std::move($1); }
-    | array_decl {}
-    | array_new_index {}
-    | array_assign {}
-    | print {}
-    | if_then {}
-    | loop {}
-    | "ENUF" EOL {}
+    | array_decl { $$ = std::move($1); }
+    | array_new_index { $$ = std::move($1); }
+    | array_assign { $$ = std::move($1); }
+    | print { $$ = std::make_unique<ExprStatement>(std::make_unique<StringLiteral>("TODO")); }
+    | if_then { $$ = std::make_unique<ExprStatement>(std::make_unique<StringLiteral>("TODO")); }
+    | loop { $$ = std::make_unique<ExprStatement>(std::make_unique<StringLiteral>("TODO")); }
+    | "ENUF" EOL { $$ = std::make_unique<Break>(); }
     | expr EOL { $$ = std::make_unique<ExprStatement>(std::move($1)); }
     | EOL {}
     ;
@@ -147,11 +152,11 @@ var_decl:
 
 var_assign: IDENTIFIER "R" expr EOL { $$ = std::make_unique<VarAssign>($1, std::move($3)); };
 
-array_decl: "I" "HAS" "A" IDENTIFIER "ITZ" "A" "BUKKIT" EOL { do_something(7); };
+array_decl: "I" "HAS" "A" IDENTIFIER "ITZ" "A" "BUKKIT" EOL { $$ = std::make_unique<ArrayDecl>($4); };
 
-array_new_index: IDENTIFIER "HAS" "A" "SRS" expr "ITZ" expr EOL { do_something(8); };
+array_new_index: IDENTIFIER "HAS" "A" "SRS" expr "ITZ" expr EOL { $$ = std::make_unique<ArrayNewIndex>($1, std::move($5), std::move($7)); };
 
-array_assign: IDENTIFIER "'Z" "SRS" expr "R" expr EOL { do_something(9); };
+array_assign: IDENTIFIER "'Z" "SRS" expr "R" expr EOL { $$ = std::make_unique<ArrayAssign>($1, std::move($4), std::move($6)); };
 
 array_access: IDENTIFIER "'Z" "SRS" expr { do_something(10); };
 
@@ -189,13 +194,13 @@ loop_condition:
 expr:
     NUMBER { $$ = std::make_unique<NumberLiteral>($1); }
     | STRING { $$ = std::make_unique<StringLiteral>($1); }
-    | boolean {}
-    | "IT" {}
-    | IDENTIFIER {}
-    | logical_not {}
-    | binary_op {}
-    | array_access {}
-    | join {}
+    | boolean { $$ = std::make_unique<StringLiteral>("TODO"); }
+    | "IT" { $$ = std::make_unique<StringLiteral>("TODO"); }
+    | IDENTIFIER { $$ = std::make_unique<StringLiteral>("TODO"); }
+    | logical_not { $$ = std::make_unique<StringLiteral>("TODO"); }
+    | binary_op { $$ = std::make_unique<StringLiteral>("TODO"); }
+    | array_access { $$ = std::make_unique<StringLiteral>("TODO"); }
+    | join { $$ = std::make_unique<StringLiteral>("TODO"); }
     ;
 
 boolean: "WIN" { do_something(21); }

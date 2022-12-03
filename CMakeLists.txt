@@ -33,6 +33,10 @@ add_executable(
     ${FLEX_MyScanner_OUTPUTS}
     expressions/NumberLiteral.cpp
     expressions/StringLiteral.cpp
+    statements/ArrayAssign.cpp
+    statements/ArrayDecl.cpp
+    statements/ArrayNewIndex.cpp
+    statements/Break.cpp
     statements/ExprStatement.cpp
     statements/VarAssign.cpp
     statements/VarDecl.cpp
