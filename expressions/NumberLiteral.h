@@ -1,5 +1,5 @@
-#ifndef LOLBISON_EXPRESSIONS_NUMBERLITERAL_H_
-#define LOLBISON_EXPRESSIONS_NUMBERLITERAL_H_
+#ifndef LOLBISON_EXPRESSIONS_NUMBER_LITERAL_H_
+#define LOLBISON_EXPRESSIONS_NUMBER_LITERAL_H_
 
 #include "expressions/Expression.h"
 #include <ostream>
@@ -14,4 +14,4 @@ public:
     ~NumberLiteral() override;
 };
 
-#endif  // LOLBISON_EXPRESSIONS_NUMBERLITERAL_H_
+#endif  // LOLBISON_EXPRESSIONS_NUMBER_LITERAL_H_

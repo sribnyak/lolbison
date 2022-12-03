@@ -1,5 +1,5 @@
-#ifndef LOLBISON_STATEMENTS_ARRAYASSIGN_H_
-#define LOLBISON_STATEMENTS_ARRAYASSIGN_H_
+#ifndef LOLBISON_STATEMENTS_ARRAY_ASSIGN_H_
+#define LOLBISON_STATEMENTS_ARRAY_ASSIGN_H_
 
 #include "statements/Statement.h"
 #include "expressions/Expression.h"
@@ -13,10 +13,10 @@ class ArrayAssign : public Statement {
     std::unique_ptr<Expression> value;
 
 public:
-    ArrayAssign(std::string array_name, std::unique_ptr<Expression> index,
+    ArrayAssign(const std::string& array_name, std::unique_ptr<Expression> index,
                 std::unique_ptr<Expression> value);
     void print(std::ostream& out, int indent) const override;
     ~ArrayAssign() override;
 };
 
-#endif  // LOLBISON_STATEMENTS_ARRAYASSIGN_H_
+#endif  // LOLBISON_STATEMENTS_ARRAY_ASSIGN_H_

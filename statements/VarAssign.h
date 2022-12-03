@@ -1,5 +1,5 @@
-#ifndef LOLBISON_STATEMENTS_VARASSIGN_H_
-#define LOLBISON_STATEMENTS_VARASSIGN_H_
+#ifndef LOLBISON_STATEMENTS_VAR_ASSIGN_H_
+#define LOLBISON_STATEMENTS_VAR_ASSIGN_H_
 
 #include "statements/Statement.h"
 #include "expressions/Expression.h"
@@ -12,9 +12,9 @@ class VarAssign : public Statement {
     std::unique_ptr<Expression> value;
 
 public:
-    VarAssign(std::string name, std::unique_ptr<Expression> value);
+    VarAssign(const std::string& name, std::unique_ptr<Expression> value);
     void print(std::ostream& out, int indent) const override;
     ~VarAssign() override;
 };
 
-#endif  // LOLBISON_STATEMENTS_VARASSIGN_H_
+#endif  // LOLBISON_STATEMENTS_VAR_ASSIGN_H_

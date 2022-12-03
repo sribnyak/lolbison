@@ -1,6 +1,6 @@
 #include "Program.h"
 
-Program::Program(std::string version,
+Program::Program(const std::string& version,
                  std::vector<std::unique_ptr<Statement>> statements)
     : version(version), statements(std::move(statements)) {}
 

@@ -1,5 +1,5 @@
-#ifndef LOLBISON_ASTNODE_H_
-#define LOLBISON_ASTNODE_H_
+#ifndef LOLBISON_AST_NODE_H_
+#define LOLBISON_AST_NODE_H_
 
 #include <ostream>
 
@@ -10,4 +10,4 @@ public:
     virtual void print(std::ostream& out, int indent) const = 0;
 };
 
-#endif // LOLBISON_ASTNODE_H_
+#endif // LOLBISON_AST_NODE_H_

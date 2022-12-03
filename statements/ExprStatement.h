@@ -1,5 +1,5 @@
-#ifndef LOLBISON_STATEMENTS_EXPRSTATEMENT_H_
-#define LOLBISON_STATEMENTS_EXPRSTATEMENT_H_
+#ifndef LOLBISON_STATEMENTS_EXPR_STATEMENT_H_
+#define LOLBISON_STATEMENTS_EXPR_STATEMENT_H_
 
 #include "statements/Statement.h"
 #include "expressions/Expression.h"
@@ -16,4 +16,4 @@ public:
     ~ExprStatement() override;
 };
 
-#endif  // LOLBISON_STATEMENTS_EXPRSTATEMENT_H_
+#endif  // LOLBISON_STATEMENTS_EXPR_STATEMENT_H_

@@ -1,5 +1,5 @@
-#ifndef LOLBISON_EXPRESSIONS_STRINGLITERAL_H_
-#define LOLBISON_EXPRESSIONS_STRINGLITERAL_H_
+#ifndef LOLBISON_EXPRESSIONS_STRING_LITERAL_H_
+#define LOLBISON_EXPRESSIONS_STRING_LITERAL_H_
 
 #include "expressions/Expression.h"
 #include <ostream>
@@ -9,9 +9,9 @@ class StringLiteral : public Expression {
     std::string value;
 
 public:
-    StringLiteral(std::string value);
+    StringLiteral(const std::string& value);
     void print(std::ostream& out, int indent) const override;
     ~StringLiteral() override;
 };
 
-#endif  // LOLBISON_EXPRESSIONS_STRINGLITERAL_H_
+#endif  // LOLBISON_EXPRESSIONS_STRING_LITERAL_H_

@@ -1,6 +1,6 @@
 #include "statements/ArrayDecl.h"
 
-ArrayDecl::ArrayDecl(std::string name) : name(name) {}
+ArrayDecl::ArrayDecl(const std::string& name) : name(name) {}
 
 void ArrayDecl::print(std::ostream& out, int indent) const {
     out << "ArrayDecl(" << "name=\"" << name << "\")";

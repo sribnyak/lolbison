@@ -13,7 +13,7 @@ class Program : public AstNode {
     std::vector<std::unique_ptr<Statement>> statements;
 
 public:
-    Program(std::string version,
+    Program(const std::string& version,
             std::vector<std::unique_ptr<Statement>> statements);
     void print(std::ostream& out, int indent) const override;
 };

@@ -105,7 +105,10 @@
 %nterm <std::unique_ptr<ArrayDecl>> array_decl
 %nterm <std::unique_ptr<ArrayNewIndex>> array_new_index
 %nterm <std::unique_ptr<ArrayAssign>> array_assign
+%nterm <std::unique_ptr<ArrayAccess>> array_access
 %nterm <std::unique_ptr<Expression>> expr
+%nterm <std::unique_ptr<BooleanLiteral>> boolean
+%nterm <std::unique_ptr<LogicalNot>> logical_not
 
 // Prints output in parsing option for debugging location terminal
 // %printer { yyo << $$; } <*>;
@@ -158,7 +161,7 @@ array_new_index: IDENTIFIER "HAS" "A" "SRS" expr "ITZ" expr EOL { $$ = std::make
 
 array_assign: IDENTIFIER "'Z" "SRS" expr "R" expr EOL { $$ = std::make_unique<ArrayAssign>($1, std::move($4), std::move($6)); };
 
-array_access: IDENTIFIER "'Z" "SRS" expr { do_something(10); };
+array_access: IDENTIFIER "'Z" "SRS" expr { $$ = std::make_unique<ArrayAccess>($1, std::move($4)); };
 
 print:
     "VISIBLE" many_args EOL  { do_something(11); }
@@ -194,20 +197,20 @@ loop_condition:
 expr:
     NUMBER { $$ = std::make_unique<NumberLiteral>($1); }
     | STRING { $$ = std::make_unique<StringLiteral>($1); }
-    | boolean { $$ = std::make_unique<StringLiteral>("TODO"); }
-    | "IT" { $$ = std::make_unique<StringLiteral>("TODO"); }
-    | IDENTIFIER { $$ = std::make_unique<StringLiteral>("TODO"); }
-    | logical_not { $$ = std::make_unique<StringLiteral>("TODO"); }
+    | boolean { $$ = std::move($1); }
+    | "IT" { $$ = std::make_unique<It>(); }
+    | IDENTIFIER { $$ = std::make_unique<Identifier>($1); }
+    | logical_not { $$ = std::move($1); }
     | binary_op { $$ = std::make_unique<StringLiteral>("TODO"); }
-    | array_access { $$ = std::make_unique<StringLiteral>("TODO"); }
+    | array_access { $$ = std::move($1); }
     | join { $$ = std::make_unique<StringLiteral>("TODO"); }
     ;
 
-boolean: "WIN" { do_something(21); }
-    | "FAIL" { do_something(22); }
+boolean: "WIN" { $$ = std::make_unique<BooleanLiteral>(true); }
+    | "FAIL" { $$ = std::make_unique<BooleanLiteral>(false); }
     ;
 
-logical_not: "NOT" expr { do_something(23); };
+logical_not: "NOT" expr { $$ = std::make_unique<LogicalNot>(std::move($2)); };
 
 binary_op:
     binary_op_name expr "AN" expr { do_something(24); }

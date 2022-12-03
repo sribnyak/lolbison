@@ -1,5 +1,5 @@
-#ifndef LOLBISON_STATEMENTS_VARDECL_H_
-#define LOLBISON_STATEMENTS_VARDECL_H_
+#ifndef LOLBISON_STATEMENTS_VAR_DECL_H_
+#define LOLBISON_STATEMENTS_VAR_DECL_H_
 
 #include "statements/Statement.h"
 #include "expressions/Expression.h"
@@ -12,10 +12,10 @@ class VarDecl : public Statement {
     std::unique_ptr<Expression> value;
 
 public:
-    VarDecl(std::string name);
-    VarDecl(std::string name, std::unique_ptr<Expression> value);
+    VarDecl(const std::string& name);
+    VarDecl(const std::string& name, std::unique_ptr<Expression> value);
     void print(std::ostream& out, int indent) const override;
     ~VarDecl() override;
 };
 
-#endif  // LOLBISON_STATEMENTS_VARDECL_H_
+#endif  // LOLBISON_STATEMENTS_VAR_DECL_H_

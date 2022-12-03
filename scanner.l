@@ -19,7 +19,7 @@
 
   // A number symbol corresponding to the value in S.
   yy::parser::symbol_type make_NUMBER(
-    const std::string &s,
+    const std::string& s,
     const yy::parser::location_type& loc
   );
 
@@ -142,7 +142,7 @@ blank [ \t\r]
 %%
 
 yy::parser::symbol_type make_NUMBER(
-  const std::string &s,
+  const std::string& s,
   const yy::parser::location_type& loc
 ) {
   errno = 0;

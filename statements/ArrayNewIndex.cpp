@@ -1,6 +1,6 @@
 #include "statements/ArrayNewIndex.h"
 
-ArrayNewIndex::ArrayNewIndex(std::string array_name,
+ArrayNewIndex::ArrayNewIndex(const std::string& array_name,
                              std::unique_ptr<Expression> index,
                              std::unique_ptr<Expression> value)
     : array_name(array_name),

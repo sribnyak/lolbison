@@ -1,8 +1,8 @@
 #include "statements/VarDecl.h"
 
-VarDecl::VarDecl(std::string name) : name(name), value() {}
+VarDecl::VarDecl(const std::string& name) : name(name), value() {}
 
-VarDecl::VarDecl(std::string name, std::unique_ptr<Expression> value)
+VarDecl::VarDecl(const std::string& name, std::unique_ptr<Expression> value)
     : name(name), value(std::move(value)) {}
 
 void VarDecl::print(std::ostream& out, int indent) const {

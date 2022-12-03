@@ -31,6 +31,11 @@ add_executable(
     driver.cpp
     ${BISON_MyParser_OUTPUTS}
     ${FLEX_MyScanner_OUTPUTS}
+    expressions/ArrayAccess.cpp
+    expressions/BooleanLiteral.cpp
+    expressions/Identifier.cpp
+    expressions/It.cpp
+    expressions/LogicalNot.cpp
     expressions/NumberLiteral.cpp
     expressions/StringLiteral.cpp
     statements/ArrayAssign.cpp

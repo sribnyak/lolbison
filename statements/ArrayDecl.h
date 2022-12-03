@@ -1,5 +1,5 @@
-#ifndef LOLBISON_STATEMENTS_ARRAYDECL_H_
-#define LOLBISON_STATEMENTS_ARRAYDECL_H_
+#ifndef LOLBISON_STATEMENTS_ARRAY_DECL_H_
+#define LOLBISON_STATEMENTS_ARRAY_DECL_H_
 
 #include "statements/Statement.h"
 #include <ostream>
@@ -9,9 +9,9 @@ class ArrayDecl : public Statement {
     std::string name;
 
 public:
-    ArrayDecl(std::string name);
+    ArrayDecl(const std::string& name);
     void print(std::ostream& out, int indent) const override;
     ~ArrayDecl() override;
 };
 
-#endif  // LOLBISON_STATEMENTS_ARRAYDECL_H_
+#endif  // LOLBISON_STATEMENTS_ARRAY_DECL_H_

@@ -1,6 +1,6 @@
 #include "statements/ArrayAssign.h"
 
-ArrayAssign::ArrayAssign(std::string array_name,
+ArrayAssign::ArrayAssign(const std::string& array_name,
                          std::unique_ptr<Expression> index,
                          std::unique_ptr<Expression> value)
     : array_name(array_name),

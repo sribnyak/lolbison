@@ -1,6 +1,6 @@
 #include "statements/VarAssign.h"
 
-VarAssign::VarAssign(std::string name, std::unique_ptr<Expression> value)
+VarAssign::VarAssign(const std::string& name, std::unique_ptr<Expression> value)
     : name(name), value(std::move(value)) {}
 
 void VarAssign::print(std::ostream& out, int indent) const {

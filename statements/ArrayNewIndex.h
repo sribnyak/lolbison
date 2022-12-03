@@ -1,5 +1,5 @@
-#ifndef LOLBISON_STATEMENTS_ARRAYNEWINDEX_H_
-#define LOLBISON_STATEMENTS_ARRAYNEWINDEX_H_
+#ifndef LOLBISON_STATEMENTS_ARRAY_NEW_INDEX_H_
+#define LOLBISON_STATEMENTS_ARRAY_NEW_INDEX_H_
 
 #include "statements/Statement.h"
 #include "expressions/Expression.h"
@@ -13,10 +13,10 @@ class ArrayNewIndex : public Statement {
     std::unique_ptr<Expression> value;
 
 public:
-    ArrayNewIndex(std::string array_name, std::unique_ptr<Expression> index,
+    ArrayNewIndex(const std::string& array_name, std::unique_ptr<Expression> index,
                   std::unique_ptr<Expression> value);
     void print(std::ostream& out, int indent) const override;
     ~ArrayNewIndex() override;
 };
 
-#endif  // LOLBISON_STATEMENTS_ARRAYNEWINDEX_H_
+#endif  // LOLBISON_STATEMENTS_ARRAY_NEW_INDEX_H_
