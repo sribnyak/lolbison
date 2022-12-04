@@ -48,6 +48,7 @@ add_executable(
     expressions/BooleanLiteral.cpp
     expressions/Identifier.cpp
     expressions/It.cpp
+    expressions/Join.cpp
     expressions/LogicalNot.cpp
     expressions/NumberLiteral.cpp
     expressions/StringLiteral.cpp
@@ -56,6 +57,7 @@ add_executable(
     statements/ArrayNewIndex.cpp
     statements/Break.cpp
     statements/ExprStatement.cpp
+    statements/Print.cpp
     statements/VarAssign.cpp
     statements/VarDecl.cpp
     Program.cpp

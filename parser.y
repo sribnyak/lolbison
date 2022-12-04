@@ -106,6 +106,9 @@
 %nterm <std::unique_ptr<ArrayNewIndex>> array_new_index
 %nterm <std::unique_ptr<ArrayAssign>> array_assign
 %nterm <std::unique_ptr<ArrayAccess>> array_access
+%nterm <std::unique_ptr<Print>> print
+%nterm <std::unique_ptr<Join>> join
+%nterm <std::vector<std::unique_ptr<Expression>>> many_args
 %nterm <std::unique_ptr<Expression>> expr
 %nterm <std::unique_ptr<BooleanLiteral>> boolean
 %nterm <std::unique_ptr<LogicalNot>> logical_not
@@ -143,7 +146,7 @@ statement:
     | array_decl { $$ = std::move($1); }
     | array_new_index { $$ = std::move($1); }
     | array_assign { $$ = std::move($1); }
-    | print { $$ = std::make_unique<ExprStatement>(std::make_unique<StringLiteral>("TODO")); }
+    | print { $$ = std::move($1); }
     | if_then { $$ = std::make_unique<ExprStatement>(std::make_unique<StringLiteral>("TODO")); }
     | loop { $$ = std::make_unique<ExprStatement>(std::make_unique<StringLiteral>("TODO")); }
     | "ENUF" EOL { $$ = std::make_unique<Break>(); }
@@ -167,23 +170,23 @@ array_assign: IDENTIFIER "'Z" "SRS" expr "R" expr EOL { $$ = std::make_unique<Ar
 array_access: IDENTIFIER "'Z" "SRS" expr { $$ = std::make_unique<ArrayAccess>($1, std::move($4)); };
 
 print:
-    "VISIBLE" many_args EOL  { do_something(11); }
-    | "VISIBLE" many_args "!" EOL { do_something(12); }
+    "VISIBLE" many_args EOL { $$ = std::make_unique<Print>(std::move($2), false); }
+    | "VISIBLE" many_args "!" EOL { $$ = std::make_unique<Print>(std::move($2), true); }
     ;
 
-join: "SMOOSH" many_args "MKAY" { do_something(13); };
+join: "SMOOSH" many_args "MKAY" { $$ = std::make_unique<Join>(std::move($2)); }
 
 many_args:
-    expr { do_something(14); }
-    | many_args expr { do_something(15); }
-    | many_args "AN" expr { do_something(25); }
+    expr { $$ = std::vector<std::unique_ptr<Expression>>(); $$.push_back(std::move($1)); }
+    | many_args expr { $$ = std::move($1); $$.push_back(std::move($2)); }
+    | many_args "AN" expr { $$ = std::move($1); $$.push_back(std::move($3)); }
     ;
 
 if_then: "O" "RLY?" EOL "YA" "RLY" EOL statements "OIC" EOL { do_something(16); }
     | "O" "RLY?" EOL "YA" "RLY" EOL statements "NO" "WAI" EOL statements "OIC" EOL { do_something(17); }
     ;
 
-loop: "IM" "IN" "YR" IDENTIFIER loop_head EOL statements "IM" "OUTTA" "YR" IDENTIFIER EOL { do_something(40); };
+loop: "IM" "IN" "YR" IDENTIFIER loop_head EOL statements "IM" "OUTTA" "YR" IDENTIFIER EOL { do_something(40); }; // check label after "im outta"!
 
 loop_head:
     %empty { do_something(41); }
@@ -206,7 +209,7 @@ expr:
     | logical_not { $$ = std::move($1); }
     | binary_op { $$ = std::move($1); }
     | array_access { $$ = std::move($1); }
-    | join { $$ = std::make_unique<StringLiteral>("TODO"); }
+    | join { $$ = std::move($1); }
     ;
 
 boolean: "WIN" { $$ = std::make_unique<BooleanLiteral>(true); }

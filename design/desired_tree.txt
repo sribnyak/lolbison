@@ -24,8 +24,7 @@ Program(
                     value=BooleanLiteral(value=true)
                 ),
             ]
-        ), // check label after "im outta"!
-
+        ),
         ArrayAssign(
             array_name="array",
             index=NumberLiteral(value=0),
@@ -36,14 +35,12 @@ Program(
             index=NumberLiteral(value=1),
             value=BooleanLiteral(value=false)
         ),
-
         Print(
             arguments=[
                 StringLiteral(value="READY TO SURCH 4 YR PRIMES"),
             ],
             suppress_newline=false
         ),
-
         Loop(
             name="loop",
             head=IncrementLoopHead(
@@ -119,7 +116,6 @@ Program(
                 ),
             ]
         ),
-
         Print(
             arguments=[
                 StringLiteral(value="FOUND ALL YR PRIMES SMALLR THAN "),
