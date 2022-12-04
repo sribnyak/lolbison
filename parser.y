@@ -109,6 +109,9 @@
 %nterm <std::unique_ptr<Expression>> expr
 %nterm <std::unique_ptr<BooleanLiteral>> boolean
 %nterm <std::unique_ptr<LogicalNot>> logical_not
+%nterm <std::unique_ptr<BinaryOp>> binary_op
+%nterm <std::unique_ptr<BinaryOp>> binary_op_name
+%nterm <std::unique_ptr<BinaryOp>> math_func
 
 // Prints output in parsing option for debugging location terminal
 // %printer { yyo << $$; } <*>;
@@ -201,7 +204,7 @@ expr:
     | "IT" { $$ = std::make_unique<It>(); }
     | IDENTIFIER { $$ = std::make_unique<Identifier>($1); }
     | logical_not { $$ = std::move($1); }
-    | binary_op { $$ = std::make_unique<StringLiteral>("TODO"); }
+    | binary_op { $$ = std::move($1); }
     | array_access { $$ = std::move($1); }
     | join { $$ = std::make_unique<StringLiteral>("TODO"); }
     ;
@@ -213,27 +216,27 @@ boolean: "WIN" { $$ = std::make_unique<BooleanLiteral>(true); }
 logical_not: "NOT" expr { $$ = std::make_unique<LogicalNot>(std::move($2)); };
 
 binary_op:
-    binary_op_name expr "AN" expr { do_something(24); }
-    | binary_op_name expr expr { do_something(26); }
+    binary_op_name expr "AN" expr { $$ = std::move($1); $$->init_args(std::move($2), std::move($4)); }
+    | binary_op_name expr expr { $$ = std::move($1); $$->init_args(std::move($2), std::move($3)); }
     ;
 
 binary_op_name:
-    math_func "OF" { do_something(27); }
-    | "BOTH" "OF" { do_something(28); }
-    | "EITHER" "OF" { do_something(29); }
-    | "WON" "OF" { do_something(30); }
-    | "BOTH" "SAEM" { do_something(31); }
-    | "DIFFRINT" { do_something(32); }
+    math_func "OF" { $$ = std::move($1); }
+    | "BOTH" "OF" { $$ = std::make_unique<BinaryAnd>(); }
+    | "EITHER" "OF" { $$ = std::make_unique<BinaryOr>(); }
+    | "WON" "OF" { $$ = std::make_unique<BinaryXor>(); }
+    | "BOTH" "SAEM" { $$ = std::make_unique<BinaryEq>(); }
+    | "DIFFRINT" { $$ = std::make_unique<BinaryNeq>(); }
     ;
 
 math_func:
-    "SUM" { do_something(33); }
-    | "DIFF" { do_something(34); }
-    | "PRODUKT" { do_something(35); }
-    | "QUOSHUNT" { do_something(36); }
-    | "MOD" { do_something(37); }
-    | "BIGGR" { do_something(38); }
-    | "SMALLR" { do_something(39); }
+    "SUM" { $$ = std::make_unique<BinarySum>(); }
+    | "DIFF" { $$ = std::make_unique<BinarySub>(); }
+    | "PRODUKT" { $$ = std::make_unique<BinaryMul>(); }
+    | "QUOSHUNT" { $$ = std::make_unique<BinaryDiv>(); }
+    | "MOD" { $$ = std::make_unique<BinaryMod>(); }
+    | "BIGGR" { $$ = std::make_unique<BinaryMax>(); }
+    | "SMALLR" { $$ = std::make_unique<BinaryMin>(); }
     ;
 
 %%

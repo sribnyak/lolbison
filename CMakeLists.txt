@@ -31,6 +31,19 @@ add_executable(
     driver.cpp
     ${BISON_MyParser_OUTPUTS}
     ${FLEX_MyScanner_OUTPUTS}
+    expressions/binary_ops/BinaryAnd.cpp
+    expressions/binary_ops/BinaryDiv.cpp
+    expressions/binary_ops/BinaryEq.cpp
+    expressions/binary_ops/BinaryMax.cpp
+    expressions/binary_ops/BinaryMin.cpp
+    expressions/binary_ops/BinaryMod.cpp
+    expressions/binary_ops/BinaryMul.cpp
+    expressions/binary_ops/BinaryNeq.cpp
+    expressions/binary_ops/BinaryOp.cpp
+    expressions/binary_ops/BinaryOr.cpp
+    expressions/binary_ops/BinarySub.cpp
+    expressions/binary_ops/BinarySum.cpp
+    expressions/binary_ops/BinaryXor.cpp
     expressions/ArrayAccess.cpp
     expressions/BooleanLiteral.cpp
     expressions/Identifier.cpp

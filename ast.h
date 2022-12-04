@@ -1,6 +1,20 @@
 #ifndef LOLBISON_AST_H_
 #define LOLBISON_AST_H_
 
+
+#include "expressions/binary_ops/BinaryAnd.h"
+#include "expressions/binary_ops/BinaryDiv.h"
+#include "expressions/binary_ops/BinaryEq.h"
+#include "expressions/binary_ops/BinaryMax.h"
+#include "expressions/binary_ops/BinaryMin.h"
+#include "expressions/binary_ops/BinaryMod.h"
+#include "expressions/binary_ops/BinaryMul.h"
+#include "expressions/binary_ops/BinaryNeq.h"
+#include "expressions/binary_ops/BinaryOp.h"
+#include "expressions/binary_ops/BinaryOr.h"
+#include "expressions/binary_ops/BinarySub.h"
+#include "expressions/binary_ops/BinarySum.h"
+#include "expressions/binary_ops/BinaryXor.h"
 #include "expressions/ArrayAccess.h"
 #include "expressions/BooleanLiteral.h"
 #include "expressions/Identifier.h"
