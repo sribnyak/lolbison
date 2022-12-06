@@ -28,4 +28,8 @@ void IfThen::print(std::ostream& out, int indent) const {
         << std::string(indent, ' ') << ")";
 }
 
+void IfThen::exec(Driver& driver) {
+    // TODO: implement
+}
+
 IfThen::~IfThen() = default;

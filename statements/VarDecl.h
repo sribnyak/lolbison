@@ -15,6 +15,7 @@ public:
     VarDecl(const std::string& name);
     VarDecl(const std::string& name, std::unique_ptr<Expression> value);
     void print(std::ostream& out, int indent) const override;
+    void exec(Driver& driver) override;
     ~VarDecl() override;
 };
 

@@ -11,6 +11,7 @@ class ArrayDecl : public Statement {
 public:
     ArrayDecl(const std::string& name);
     void print(std::ostream& out, int indent) const override;
+    void exec(Driver& driver) override;
     ~ArrayDecl() override;
 };
 

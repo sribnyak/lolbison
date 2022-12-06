@@ -12,4 +12,8 @@ void ExprStatement::print(std::ostream& out, int indent) const {
         << std::string(indent, ' ') << ")";
 }
 
+void ExprStatement::exec(Driver& driver) {
+    // TODO: implement
+}
+
 ExprStatement::~ExprStatement() = default;

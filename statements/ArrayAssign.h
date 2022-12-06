@@ -16,6 +16,7 @@ public:
     ArrayAssign(const std::string& array_name, std::unique_ptr<Expression> index,
                 std::unique_ptr<Expression> value);
     void print(std::ostream& out, int indent) const override;
+    void exec(Driver& driver) override;
     ~ArrayAssign() override;
 };
 

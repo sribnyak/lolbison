@@ -1,4 +1,5 @@
 #include "driver.hh"
+#include <exception>
 #include <iostream>
 
 Driver::Driver()
@@ -6,7 +7,9 @@ Driver::Driver()
       trace_scanning(false),
       location_debug(false),
       scanner(*this),
-      parser(scanner, *this) {}
+      parser(scanner, *this) {
+    variables["IT"] = std::make_shared<NilObject>();
+}
 
 int Driver::parse(const std::string& f) {
     file = f;
@@ -16,12 +19,14 @@ int Driver::parse(const std::string& f) {
     parser.set_debug_level(trace_parsing);
     int res = parser();
 
+    result = 1;
     if (program) {
-        program->print(std::cout, 0);
-        std::cout << std::endl;
-        result = 0;
-    } else {
-        result = 1;
+        try {
+            program->exec(*this);
+            result = 0;
+        } catch (const std::exception& e) {
+            std::cerr << e.what() << std::endl;
+        }
     }
 
     scan_end();

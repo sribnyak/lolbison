@@ -19,4 +19,8 @@ void ArrayAssign::print(std::ostream& out, int indent) const {
         << std::string(indent, ' ') << ")";
 }
 
+void ArrayAssign::exec(Driver& driver) {
+    // TODO: implement
+}
+
 ArrayAssign::~ArrayAssign() = default;

@@ -12,6 +12,7 @@ class ExprStatement : public Statement {
 public:
     ExprStatement(std::unique_ptr<Expression> expression);
     void print(std::ostream& out, int indent) const override;
+    void exec(Driver& driver) override;
     ~ExprStatement() override;
 };
 

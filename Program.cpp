@@ -16,3 +16,9 @@ void Program::print(std::ostream& out, int indent) const {
     out << std::string(indent + INDENT_WIDTH, ' ') << "]" << std::endl
         << std::string(indent, ' ') << ")";
 }
+
+void Program::exec(Driver& driver) {
+    for (auto& statement : statements) {
+        statement->exec(driver);
+    }
+}

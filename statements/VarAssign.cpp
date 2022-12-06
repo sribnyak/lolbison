@@ -12,4 +12,8 @@ void VarAssign::print(std::ostream& out, int indent) const {
         << std::string(indent, ' ') << ")";
 }
 
+void VarAssign::exec(Driver& driver) {
+    // TODO: implement
+}
+
 VarAssign::~VarAssign() = default;

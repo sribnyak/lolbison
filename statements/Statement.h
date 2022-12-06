@@ -3,8 +3,11 @@
 
 #include "AstNode.h"
 
+class Driver;
+
 class Statement : public AstNode {
 public:
+    virtual void exec(Driver& driver) = 0;
     virtual ~Statement() {}
 };
 

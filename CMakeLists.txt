@@ -67,6 +67,7 @@ add_executable(
     statements/Print.cpp
     statements/VarAssign.cpp
     statements/VarDecl.cpp
+    objects/NilObject.cpp
     Program.cpp
 )
 target_include_directories(lolbison PRIVATE ${Lolbison_SOURCE_DIR})

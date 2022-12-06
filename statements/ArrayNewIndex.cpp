@@ -19,4 +19,8 @@ void ArrayNewIndex::print(std::ostream& out, int indent) const {
         << std::string(indent, ' ') << ")";
 }
 
+void ArrayNewIndex::exec(Driver& driver) {
+    // TODO: implement
+}
+
 ArrayNewIndex::~ArrayNewIndex() = default;

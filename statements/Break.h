@@ -7,6 +7,7 @@
 class Break : public Statement {
 public:
     void print(std::ostream& out, int indent) const override;
+    void exec(Driver& driver) override;
     ~Break() override;
 };
 

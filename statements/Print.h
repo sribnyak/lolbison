@@ -15,6 +15,7 @@ public:
     Print(std::vector<std::unique_ptr<Expression>> arguments,
           bool suppress_newline);
     void print(std::ostream& out, int indent) const override;
+    void exec(Driver& driver) override;
     ~Print() override;
 };
 

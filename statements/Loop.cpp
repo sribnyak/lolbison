@@ -24,4 +24,8 @@ void Loop::print(std::ostream& out, int indent) const {
         << std::string(indent, ' ') << ")";
 }
 
+void Loop::exec(Driver& driver) {
+    // TODO: implement
+}
+
 Loop::~Loop() = default;

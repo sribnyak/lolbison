@@ -15,6 +15,7 @@ public:
     IfThen(std::vector<std::unique_ptr<Statement>> true_statements,
            std::vector<std::unique_ptr<Statement>> false_statements);
     void print(std::ostream& out, int indent) const override;
+    void exec(Driver& driver) override;
     ~IfThen() override;
 };
 
