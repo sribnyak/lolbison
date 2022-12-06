@@ -4,7 +4,6 @@
 #include "statements/Statement.h"
 #include <memory>
 #include <ostream>
-#include <string>
 #include <vector>
 
 class IfThen : public Statement {

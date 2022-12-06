@@ -2,9 +2,7 @@
 #define LOLBISON_EXPRESSIONS_BINARY_OPS_BINARY_MUL_H_
 
 #include "expressions/binary_ops/BinaryOp.h"
-#include <memory>
 #include <ostream>
-#include <string>
 
 class BinaryMul : public BinaryOp {
 public:

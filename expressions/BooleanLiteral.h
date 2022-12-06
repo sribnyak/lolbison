@@ -3,7 +3,6 @@
 
 #include "expressions/Expression.h"
 #include <ostream>
-#include <string>
 
 class BooleanLiteral : public Expression {
     bool value;

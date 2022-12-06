@@ -1,5 +1,5 @@
 #include "driver.hh"
-#include "parser.hh"
+#include <iostream>
 
 Driver::Driver()
     : trace_parsing(false),

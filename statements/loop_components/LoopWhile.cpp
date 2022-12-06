@@ -1,4 +1,6 @@
 #include "statements/loop_components/LoopWhile.h"
+#include <memory>
+#include <string>
 
 void LoopWhile::print(std::ostream& out, int indent) const {
     out << "LoopWhile(" << std::endl

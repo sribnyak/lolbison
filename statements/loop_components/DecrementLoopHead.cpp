@@ -1,4 +1,6 @@
 #include "statements/loop_components/DecrementLoopHead.h"
+#include <memory>
+#include <string>
 
 void DecrementLoopHead::print(std::ostream& out, int indent) const {
     out << "DecrementLoopHead(" << std::endl

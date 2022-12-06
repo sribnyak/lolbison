@@ -1,4 +1,5 @@
 #include "statements/ExprStatement.h"
+#include <string>
 
 ExprStatement::ExprStatement(std::unique_ptr<Expression> expression)
     : expression(std::move(expression)) {}

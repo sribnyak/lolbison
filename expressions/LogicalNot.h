@@ -4,7 +4,6 @@
 #include "expressions/Expression.h"
 #include <memory>
 #include <ostream>
-#include <string>
 
 class LogicalNot : public Expression {
     std::unique_ptr<Expression> operand;

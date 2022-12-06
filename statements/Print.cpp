@@ -1,4 +1,5 @@
 #include "statements/Print.h"
+#include <string>
 
 Print::Print(std::vector<std::unique_ptr<Expression>> arguments,
              bool suppress_newline)

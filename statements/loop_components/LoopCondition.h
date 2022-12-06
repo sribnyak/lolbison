@@ -4,8 +4,6 @@
 #include "AstNode.h"
 #include "expressions/Expression.h"
 #include <memory>
-#include <ostream>
-#include <string>
 
 class LoopCondition : public AstNode {
 protected:

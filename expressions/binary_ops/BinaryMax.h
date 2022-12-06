@@ -2,9 +2,7 @@
 #define LOLBISON_EXPRESSIONS_BINARY_OPS_BINARY_MAX_H_
 
 #include "expressions/binary_ops/BinaryOp.h"
-#include <memory>
 #include <ostream>
-#include <string>
 
 class BinaryMax : public BinaryOp {
 public:

@@ -12,7 +12,46 @@
     #include <vector>
     class Scanner;
     class Driver;
-    #include "ast_forward_declarations.h"
+    #include "expressions/binary_ops/BinaryAnd.h"
+    #include "expressions/binary_ops/BinaryDiv.h"
+    #include "expressions/binary_ops/BinaryEq.h"
+    #include "expressions/binary_ops/BinaryMax.h"
+    #include "expressions/binary_ops/BinaryMin.h"
+    #include "expressions/binary_ops/BinaryMod.h"
+    #include "expressions/binary_ops/BinaryMul.h"
+    #include "expressions/binary_ops/BinaryNeq.h"
+    #include "expressions/binary_ops/BinaryOp.h"
+    #include "expressions/binary_ops/BinaryOr.h"
+    #include "expressions/binary_ops/BinarySub.h"
+    #include "expressions/binary_ops/BinarySum.h"
+    #include "expressions/binary_ops/BinaryXor.h"
+    #include "expressions/ArrayAccess.h"
+    #include "expressions/BooleanLiteral.h"
+    #include "expressions/Expression.h"
+    #include "expressions/Identifier.h"
+    #include "expressions/It.h"
+    #include "expressions/Join.h"
+    #include "expressions/LogicalNot.h"
+    #include "expressions/NumberLiteral.h"
+    #include "expressions/StringLiteral.h"
+    #include "statements/loop_components/DecrementLoopHead.h"
+    #include "statements/loop_components/IncrementLoopHead.h"
+    #include "statements/loop_components/LoopCondition.h"
+    #include "statements/loop_components/LoopHead.h"
+    #include "statements/loop_components/LoopUntil.h"
+    #include "statements/loop_components/LoopWhile.h"
+    #include "statements/ArrayAssign.h"
+    #include "statements/ArrayDecl.h"
+    #include "statements/ArrayNewIndex.h"
+    #include "statements/Break.h"
+    #include "statements/ExprStatement.h"
+    #include "statements/IfThen.h"
+    #include "statements/Loop.h"
+    #include "statements/Print.h"
+    #include "statements/Statement.h"
+    #include "statements/VarAssign.h"
+    #include "statements/VarDecl.h"
+    #include "Program.h"
 }
 
 
@@ -22,8 +61,6 @@
 %code {
     #include "driver.hh"
     #include "location.hh"
-
-    #include "ast.h"
 
     /* Redefine parser to use our function from scanner */
     static yy::parser::symbol_type yylex(Scanner &scanner) {

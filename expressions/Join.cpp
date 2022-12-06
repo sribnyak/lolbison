@@ -1,4 +1,5 @@
 #include "expressions/Join.h"
+#include <string>
 
 Join::Join(std::vector<std::unique_ptr<Expression>> arguments)
     : arguments(std::move(arguments)) {}

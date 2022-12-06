@@ -1,4 +1,5 @@
 #include "statements/IfThen.h"
+#include <string>
 
 IfThen::IfThen(std::vector<std::unique_ptr<Statement>> true_statements)
     : true_statements(std::move(true_statements)), false_statements() {}

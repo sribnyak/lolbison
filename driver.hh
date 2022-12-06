@@ -1,9 +1,8 @@
 #pragma once
 
-#include <map>
-#include <string>
 #include <fstream>
-#include "ast.h"
+#include <string>
+#include "Program.h"
 #include "scanner.h"
 #include "parser.hh"
 

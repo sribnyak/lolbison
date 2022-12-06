@@ -1,4 +1,6 @@
 #include "statements/loop_components/IncrementLoopHead.h"
+#include <memory>
+#include <string>
 
 void IncrementLoopHead::print(std::ostream& out, int indent) const {
     out << "IncrementLoopHead(" << std::endl

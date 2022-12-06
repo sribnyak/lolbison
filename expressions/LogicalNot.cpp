@@ -1,4 +1,5 @@
 #include "expressions/LogicalNot.h"
+#include <string>
 
 LogicalNot::LogicalNot(std::unique_ptr<Expression> operand)
     : operand(std::move(operand)) {}

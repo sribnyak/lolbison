@@ -1,4 +1,6 @@
 #include "statements/loop_components/LoopUntil.h"
+#include <memory>
+#include <string>
 
 void LoopUntil::print(std::ostream& out, int indent) const {
     out << "LoopUntil(" << std::endl
