@@ -15,6 +15,15 @@ int Driver::parse(const std::string& f) {
     scan_begin();
     parser.set_debug_level(trace_parsing);
     int res = parser();
+
+    if (program) {
+        program->print(std::cout, 0);
+        std::cout << std::endl;
+        result = 0;
+    } else {
+        result = 1;
+    }
+
     scan_end();
     return res;
 }

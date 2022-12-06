@@ -126,9 +126,7 @@
 %start program;
 
 program: empty_lines "HAI" VERSION EOL statements "KTHXBYE" empty_lines {
-    Program($3, std::move($5)).print(std::cout, 0);
-    std::cout << std::endl;
-    driver.result = 0;
+    driver.program = std::make_unique<Program>($3, std::move($5));
 };
 
 empty_lines:

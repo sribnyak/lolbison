@@ -8,24 +8,26 @@
 #include "parser.hh"
 
 class Driver {
-public:
-    Driver();
-    int result;
-    int parse(const std::string& f);
-    std::string file;
+private:
+    std::ifstream stream;
 
-    void scan_begin();
-    void scan_end();
+public:
+    int result;
+    std::string file;
 
     bool trace_parsing;
     bool trace_scanning;
     bool location_debug;
     yy::location location;
 
-    friend class Scanner;
     Scanner scanner;
     yy::parser parser;
+    std::unique_ptr<Program> program;
 
-private:
-    std::ifstream stream;
+    friend class Scanner;
+
+    Driver();
+    int parse(const std::string& f);
+    void scan_begin();
+    void scan_end();
 };

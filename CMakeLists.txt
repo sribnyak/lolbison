@@ -13,7 +13,6 @@ BISON_TARGET(
     MyParser
     parser.y
     ${Lolbison_SOURCE_DIR}/parser.cpp
-    COMPILE_FLAGS --graph
     DEFINES_FILE ${Lolbison_SOURCE_DIR}/parser.hh
 )
 

@@ -35,11 +35,11 @@ array_new_index: identifier "HAS" "A" "SRS" expr "ITZ" expr eol;
 
 array_assign: identifier "'Z" "SRS" expr "R" expr eol;
 
-array_access: identifier "'Z" "SRS" expr;  /* unusual keyword 'Z */
+array_access: identifier "'Z" "SRS" expr;
 
 print:
     "VISIBLE" many_args eol
-    | "VISIBLE" many_args "!" eol;  /* special symbol! */
+    | "VISIBLE" many_args "!" eol;
 
 join: "SMOOSH" many_args "MKAY";
 
