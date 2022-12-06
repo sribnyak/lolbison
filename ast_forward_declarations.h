@@ -43,4 +43,4 @@ class BinaryAnd;
 class BinaryOr;
 class BinaryXor;
 
-#endif // LOLBISON_AST_FORWARD_DECLARATIONS_H_
+#endif  // LOLBISON_AST_FORWARD_DECLARATIONS_H_

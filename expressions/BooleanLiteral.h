@@ -14,4 +14,4 @@ public:
     ~BooleanLiteral() override;
 };
 
-#endif // LOLBISON_EXPRESSIONS_BOOLEAN_LITERAL_H_
+#endif  // LOLBISON_EXPRESSIONS_BOOLEAN_LITERAL_H_

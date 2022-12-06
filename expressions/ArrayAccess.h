@@ -16,4 +16,4 @@ public:
     ~ArrayAccess() override;
 };
 
-#endif // LOLBISON_EXPRESSIONS_ARRAY_ACCESS_H_
+#endif  // LOLBISON_EXPRESSIONS_ARRAY_ACCESS_H_

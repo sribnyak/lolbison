@@ -11,7 +11,7 @@ Program(
             head=IncrementLoopHead(
                 counter="index",
                 condition=LoopUntil(
-                    condition=BinaryEqual(
+                    condition=BinaryEq(
                         lhs=Identifier(name="index"),
                         rhs=Identifier(name="N")
                     )
@@ -46,7 +46,7 @@ Program(
             head=IncrementLoopHead(
                 counter="step",
                 condition=LoopUntil(
-                    condition=BinaryEqual(
+                    condition=BinaryEq(
                         lhs=Identifier(name="step"),
                         rhs=Identifier(name="N")
                     )
@@ -68,10 +68,9 @@ Program(
                             ],
                             suppress_newline=false
                         ),
-
                         VarDecl(
                             name="cumpound",
-                            value=BinaryProduct(
+                            value=BinaryMul(
                                 lhs=Identifier(name="step"),
                                 rhs=Identifier(name="step")
                             )
@@ -81,7 +80,7 @@ Program(
                             head=null,
                             statements=[
                                 ExprStatement(
-                                    expression=BinaryEqual(
+                                    expression=BinaryEq(
                                         lhs=Identifier(name="cumpound"),
                                         rhs=BinaryMax(
                                             lhs=Identifier(name="cumpound"),
@@ -100,7 +99,7 @@ Program(
                                     array_name="array",
                                     index=Identifier(name="cumpound"),
                                     value=BooleanLiteral(value=false)
-                                )
+                                ),
                                 VarAssign(
                                     name="cumpound",
                                     value=BinarySum(

@@ -52,11 +52,19 @@ add_executable(
     expressions/LogicalNot.cpp
     expressions/NumberLiteral.cpp
     expressions/StringLiteral.cpp
+    statements/loop_components/DecrementLoopHead.cpp
+    statements/loop_components/IncrementLoopHead.cpp
+    statements/loop_components/LoopCondition.cpp
+    statements/loop_components/LoopHead.cpp
+    statements/loop_components/LoopUntil.cpp
+    statements/loop_components/LoopWhile.cpp
     statements/ArrayAssign.cpp
     statements/ArrayDecl.cpp
     statements/ArrayNewIndex.cpp
     statements/Break.cpp
     statements/ExprStatement.cpp
+    statements/IfThen.cpp
+    statements/Loop.cpp
     statements/Print.cpp
     statements/VarAssign.cpp
     statements/VarDecl.cpp

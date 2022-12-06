@@ -10,4 +10,4 @@ public:
     virtual void print(std::ostream& out, int indent) const = 0;
 };
 
-#endif // LOLBISON_AST_NODE_H_
+#endif  // LOLBISON_AST_NODE_H_

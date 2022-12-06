@@ -29,8 +29,6 @@
     static yy::parser::symbol_type yylex(Scanner &scanner) {
         return scanner.ScanToken();
     }
-
-    void do_something(int) {} // temporary stub before AST is implemented
 }
 
 %lex-param { Scanner &scanner }
@@ -109,6 +107,10 @@
 %nterm <std::unique_ptr<Print>> print
 %nterm <std::unique_ptr<Join>> join
 %nterm <std::vector<std::unique_ptr<Expression>>> many_args
+%nterm <std::unique_ptr<IfThen>> if_then
+%nterm <std::unique_ptr<Loop>> loop
+%nterm <std::unique_ptr<LoopHead>> loop_head
+%nterm <std::unique_ptr<LoopCondition>> loop_condition
 %nterm <std::unique_ptr<Expression>> expr
 %nterm <std::unique_ptr<BooleanLiteral>> boolean
 %nterm <std::unique_ptr<LogicalNot>> logical_not
@@ -147,8 +149,8 @@ statement:
     | array_new_index { $$ = std::move($1); }
     | array_assign { $$ = std::move($1); }
     | print { $$ = std::move($1); }
-    | if_then { $$ = std::make_unique<ExprStatement>(std::make_unique<StringLiteral>("TODO")); }
-    | loop { $$ = std::make_unique<ExprStatement>(std::make_unique<StringLiteral>("TODO")); }
+    | if_then { $$ = std::move($1); }
+    | loop { $$ = std::move($1); }
     | "ENUF" EOL { $$ = std::make_unique<Break>(); }
     | expr EOL { $$ = std::make_unique<ExprStatement>(std::move($1)); }
     | EOL {}
@@ -182,22 +184,32 @@ many_args:
     | many_args "AN" expr { $$ = std::move($1); $$.push_back(std::move($3)); }
     ;
 
-if_then: "O" "RLY?" EOL "YA" "RLY" EOL statements "OIC" EOL { do_something(16); }
-    | "O" "RLY?" EOL "YA" "RLY" EOL statements "NO" "WAI" EOL statements "OIC" EOL { do_something(17); }
+if_then: "O" "RLY?" EOL "YA" "RLY" EOL statements "OIC" EOL {
+        $$ = std::make_unique<IfThen>(std::move($7));
+    }
+    | "O" "RLY?" EOL "YA" "RLY" EOL statements "NO" "WAI" EOL statements "OIC" EOL {
+        $$ = std::make_unique<IfThen>(std::move($7), std::move($11));
+    }
     ;
 
-loop: "IM" "IN" "YR" IDENTIFIER loop_head EOL statements "IM" "OUTTA" "YR" IDENTIFIER EOL { do_something(40); }; // check label after "im outta"!
+loop: "IM" "IN" "YR" IDENTIFIER loop_head EOL statements "IM" "OUTTA" "YR" IDENTIFIER EOL {
+        if ($4 != $11) {
+            yy::parser::error(driver.location, "loop variable mismatch: " + $4 + " != " + $11);
+            YYABORT;
+        }
+        $$ = std::make_unique<Loop>($4, std::move($5), std::move($7));
+    };
 
 loop_head:
-    %empty { do_something(41); }
-    | "UPPIN" "YR" IDENTIFIER loop_condition { do_something(42); }
-    | "NERFIN" "YR" IDENTIFIER loop_condition { do_something(43); }
+    %empty {}
+    | "UPPIN" "YR" IDENTIFIER loop_condition { $$ = std::make_unique<IncrementLoopHead>($3, std::move($4)); }
+    | "NERFIN" "YR" IDENTIFIER loop_condition { $$ = std::make_unique<DecrementLoopHead>($3, std::move($4)); }
     ;
 
 loop_condition:
-    %empty { do_something(44); }
-    | "TIL" expr { do_something(45); }
-    | "WILE" expr { do_something(46); }
+    %empty {}
+    | "TIL" expr { $$ = std::make_unique<LoopUntil>(std::move($2)); }
+    | "WILE" expr { $$ = std::make_unique<LoopWhile>(std::move($2)); }
     ;
 
 expr:

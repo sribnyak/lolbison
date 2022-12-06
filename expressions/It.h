@@ -11,4 +11,4 @@ public:
     ~It() override;
 };
 
-#endif // LOLBISON_EXPRESSIONS_IT_H_
+#endif  // LOLBISON_EXPRESSIONS_IT_H_

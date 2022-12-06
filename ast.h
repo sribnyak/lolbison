@@ -1,7 +1,6 @@
 #ifndef LOLBISON_AST_H_
 #define LOLBISON_AST_H_
 
-
 #include "expressions/binary_ops/BinaryAnd.h"
 #include "expressions/binary_ops/BinaryDiv.h"
 #include "expressions/binary_ops/BinaryEq.h"
@@ -23,15 +22,23 @@
 #include "expressions/LogicalNot.h"
 #include "expressions/NumberLiteral.h"
 #include "expressions/StringLiteral.h"
+#include "statements/loop_components/DecrementLoopHead.h"
+#include "statements/loop_components/IncrementLoopHead.h"
+#include "statements/loop_components/LoopCondition.h"
+#include "statements/loop_components/LoopHead.h"
+#include "statements/loop_components/LoopUntil.h"
+#include "statements/loop_components/LoopWhile.h"
 #include "statements/ArrayAssign.h"
 #include "statements/ArrayDecl.h"
 #include "statements/ArrayNewIndex.h"
 #include "statements/Break.h"
 #include "statements/ExprStatement.h"
+#include "statements/IfThen.h"
+#include "statements/Loop.h"
 #include "statements/Print.h"
 #include "statements/VarAssign.h"
 #include "statements/VarDecl.h"
 #include "Program.h"
 #include "AstNode.h"
 
-#endif // LOLBISON_AST_H_
+#endif  // LOLBISON_AST_H_

@@ -8,4 +8,4 @@ public:
     virtual ~Expression() {}
 };
 
-#endif // LOLBISON_EXPRESSIONS_EXPRESSION_H_
+#endif  // LOLBISON_EXPRESSIONS_EXPRESSION_H_

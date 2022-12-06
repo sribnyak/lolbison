@@ -7,13 +7,15 @@
 #include <string>
 
 class BinaryOp : public Expression {
+protected:
     std::unique_ptr<Expression> lhs;
     std::unique_ptr<Expression> rhs;
 
-public:
-    BinaryOp();
     void print_binary_op(const std::string& class_name, std::ostream& out,
                          int indent) const;
+
+public:
+    BinaryOp();
     void init_args(std::unique_ptr<Expression> lhs,
                    std::unique_ptr<Expression> rhs);
     virtual ~BinaryOp() {}

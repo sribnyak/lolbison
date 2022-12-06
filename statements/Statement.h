@@ -8,4 +8,4 @@ public:
     virtual ~Statement() {}
 };
 
-#endif // LOLBISON_STATEMENTS_STATEMENT_H_
+#endif  // LOLBISON_STATEMENTS_STATEMENT_H_
