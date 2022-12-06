@@ -1,4 +1,5 @@
 #include "driver.hh"
+#include "objects/NilObject.h"
 #include <exception>
 #include <iostream>
 

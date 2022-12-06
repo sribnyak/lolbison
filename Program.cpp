@@ -1,4 +1,5 @@
 #include "Program.h"
+#include "BreakIndicator.h"
 
 Program::Program(const std::string& version,
                  std::vector<std::unique_ptr<Statement>> statements)
@@ -18,7 +19,9 @@ void Program::print(std::ostream& out, int indent) const {
 }
 
 void Program::exec(Driver& driver) {
-    for (auto& statement : statements) {
-        statement->exec(driver);
-    }
+    try {
+        for (auto& statement : statements) {
+            statement->exec(driver);
+        }
+    } catch (BreakIndicator b) {}
 }

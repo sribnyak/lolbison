@@ -1,4 +1,6 @@
 #include "statements/VarAssign.h"
+#include "driver.hh"
+#include <exception>
 
 VarAssign::VarAssign(const std::string& name, std::unique_ptr<Expression> value)
     : name(name), value(std::move(value)) {}
@@ -13,7 +15,10 @@ void VarAssign::print(std::ostream& out, int indent) const {
 }
 
 void VarAssign::exec(Driver& driver) {
-    // TODO: implement
+    if (driver.variables.find(name) == driver.variables.end()) {
+        throw std::runtime_error("Variable " + name + " does not exist");
+    }
+    driver.variables[name] = value->eval(driver);
 }
 
 VarAssign::~VarAssign() = default;

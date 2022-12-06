@@ -1,4 +1,6 @@
 #include "statements/ArrayNewIndex.h"
+#include "driver.hh"
+#include <exception>
 
 ArrayNewIndex::ArrayNewIndex(const std::string& array_name,
                              std::unique_ptr<Expression> index,
@@ -20,7 +22,11 @@ void ArrayNewIndex::print(std::ostream& out, int indent) const {
 }
 
 void ArrayNewIndex::exec(Driver& driver) {
-    // TODO: implement
+    if (driver.arrays.find(array_name) == driver.arrays.end()) {
+        throw std::runtime_error("Array " + array_name + " does not exist");
+    }
+    auto array = driver.arrays[array_name];
+    // TODO check if index is int
 }
 
 ArrayNewIndex::~ArrayNewIndex() = default;

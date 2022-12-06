@@ -1,4 +1,5 @@
 #include "statements/ExprStatement.h"
+#include "driver.hh"
 #include <string>
 
 ExprStatement::ExprStatement(std::unique_ptr<Expression> expression)
@@ -13,7 +14,7 @@ void ExprStatement::print(std::ostream& out, int indent) const {
 }
 
 void ExprStatement::exec(Driver& driver) {
-    // TODO: implement
+    driver.variables["IT"] = expression->eval(driver);
 }
 
 ExprStatement::~ExprStatement() = default;

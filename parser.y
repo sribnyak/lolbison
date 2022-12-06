@@ -229,7 +229,7 @@ if_then: "O" "RLY?" EOL "YA" "RLY" EOL statements "OIC" EOL {
 
 loop: "IM" "IN" "YR" IDENTIFIER loop_head EOL statements "IM" "OUTTA" "YR" IDENTIFIER EOL {
         if ($4 != $11) {
-            yy::parser::error(driver.location, "loop variable mismatch: " + $4 + " != " + $11);
+            yy::parser::error(driver.location, "loop name mismatch: " + $4 + " != " + $11);
             YYABORT;
         }
         $$ = std::make_unique<Loop>($4, std::move($5), std::move($7));

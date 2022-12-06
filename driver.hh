@@ -4,7 +4,6 @@
 #include <string>
 #include <map>
 #include <memory>
-#include "objects/NilObject.h"
 #include "objects/Object.h"
 #include "Program.h"
 #include "scanner.h"

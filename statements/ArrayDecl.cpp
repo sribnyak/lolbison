@@ -1,4 +1,6 @@
 #include "statements/ArrayDecl.h"
+#include "driver.hh"
+#include <exception>
 
 ArrayDecl::ArrayDecl(const std::string& name) : name(name) {}
 
@@ -7,7 +9,10 @@ void ArrayDecl::print(std::ostream& out, int indent) const {
 }
 
 void ArrayDecl::exec(Driver& driver) {
-    // TODO: implement
+    if (driver.arrays.find(name) != driver.arrays.end()) {
+        throw std::runtime_error("Array " + name + " already exists");
+    }
+    driver.arrays[name] = {};
 }
 
 ArrayDecl::~ArrayDecl() = default;
