@@ -7,6 +7,8 @@
 #include <ostream>
 #include <string>
 
+class Driver;
+
 class VarDecl : public Statement {
     std::string name;
     std::unique_ptr<Expression> value;

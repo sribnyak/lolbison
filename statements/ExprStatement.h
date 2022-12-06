@@ -6,6 +6,8 @@
 #include <memory>
 #include <ostream>
 
+class Driver;
+
 class ExprStatement : public Statement {
     std::unique_ptr<Expression> expression;
 

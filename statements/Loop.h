@@ -8,6 +8,8 @@
 #include <string>
 #include <vector>
 
+class Driver;
+
 class Loop : public Statement {
     std::string name;
     std::unique_ptr<LoopHead> head;

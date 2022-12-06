@@ -7,6 +7,8 @@
 #include <ostream>
 #include <string>
 
+class Driver;
+
 class ArrayNewIndex : public Statement {
     std::string array_name;
     std::unique_ptr<Expression> index;

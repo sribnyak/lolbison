@@ -7,6 +7,8 @@
 #include <ostream>
 #include <vector>
 
+class Driver;
+
 class Print : public Statement {
     std::vector<std::unique_ptr<Expression>> arguments;
     bool suppress_newline;

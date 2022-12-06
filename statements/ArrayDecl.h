@@ -5,6 +5,8 @@
 #include <ostream>
 #include <string>
 
+class Driver;
+
 class ArrayDecl : public Statement {
     std::string name;
 

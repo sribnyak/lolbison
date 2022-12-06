@@ -1,6 +1,6 @@
 #include "statements/VarDecl.h"
-#include "driver.hh"
 #include "objects/NilObject.h"
+#include "driver.hh"
 
 VarDecl::VarDecl(const std::string& name) : name(name), value() {}
 

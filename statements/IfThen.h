@@ -6,6 +6,8 @@
 #include <ostream>
 #include <vector>
 
+class Driver;
+
 class IfThen : public Statement {
     std::vector<std::unique_ptr<Statement>> true_statements;
     std::vector<std::unique_ptr<Statement>> false_statements;

@@ -4,6 +4,8 @@
 #include "statements/Statement.h"
 #include <ostream>
 
+class Driver;
+
 class Break : public Statement {
 public:
     void print(std::ostream& out, int indent) const override;
