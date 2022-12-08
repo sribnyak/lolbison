@@ -14,8 +14,8 @@ private:
     std::ifstream stream;
 
 public:
-    std::map<std::string, std::shared_ptr<Object>> variables;
-    std::map<std::string, std::map<int, std::shared_ptr<Object>>> arrays;
+    std::map<std::string, std::shared_ptr<const Object>> variables;
+    std::map<std::string, std::map<int, std::shared_ptr<const Object>>> arrays;
     int result;
     std::string file;
 

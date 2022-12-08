@@ -1,6 +1,6 @@
 #include "statements/VarAssign.h"
 #include "driver.hh"
-#include <exception>
+#include <stdexcept>
 
 VarAssign::VarAssign(const std::string& name, std::unique_ptr<Expression> value)
     : name(name), value(std::move(value)) {}

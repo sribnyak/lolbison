@@ -9,7 +9,7 @@ Driver::Driver()
       location_debug(false),
       scanner(*this),
       parser(scanner, *this) {
-    variables["IT"] = std::make_shared<NilObject>();
+    variables["IT"] = std::make_shared<const NilObject>();
 }
 
 int Driver::parse(const std::string& f) {

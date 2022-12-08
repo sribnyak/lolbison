@@ -1,6 +1,6 @@
 #include "statements/ArrayNewIndex.h"
 #include "driver.hh"
-#include <exception>
+#include <stdexcept>
 
 ArrayNewIndex::ArrayNewIndex(const std::string& array_name,
                              std::unique_ptr<Expression> index,

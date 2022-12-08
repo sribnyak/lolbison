@@ -1,7 +1,7 @@
 #include "statements/VarDecl.h"
 #include "objects/NilObject.h"
 #include "driver.hh"
-#include <exception>
+#include <stdexcept>
 
 VarDecl::VarDecl(const std::string& name) : name(name), value() {}
 
@@ -28,7 +28,7 @@ void VarDecl::exec(Driver& driver) {
     if (value) {
         driver.variables[name] = value->eval(driver);
     } else {
-        driver.variables[name] = std::make_shared<NilObject>();
+        driver.variables[name] = std::make_shared<const NilObject>();
     }
 }
 

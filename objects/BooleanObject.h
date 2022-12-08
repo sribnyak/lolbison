@@ -3,10 +3,16 @@
 
 #include "objects/Object.h"
 
-class BooleanObject : public Object {
+class NumberObject;
+class StringObject;
+
+class BooleanObject : public Object, public std::enable_shared_from_this<BooleanObject> {
 public:
     bool value;
 
+    std::shared_ptr<const BooleanObject> to_boolean() const override;
+    std::shared_ptr<const NumberObject> to_number() const override;
+    std::shared_ptr<const StringObject> to_string() const override;
     explicit BooleanObject(bool value);
     ~BooleanObject() override;
 };

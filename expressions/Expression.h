@@ -10,8 +10,8 @@ class Driver;
 
 class Expression : public AstNode {
 public:
-    std::shared_ptr<Object> eval(Driver& driver) { // TODO: make pure virtual
-        return std::make_shared<NilObject>();
+    std::shared_ptr<const Object> eval(Driver& driver) { // TODO: make pure virtual
+        return std::make_shared<const NilObject>();
     }
     virtual ~Expression() {}
 };
