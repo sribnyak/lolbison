@@ -4,11 +4,15 @@
 #include "expressions/Expression.h"
 #include <ostream>
 
+class Object;
+class Driver;
+
 class BooleanLiteral : public Expression {
     bool value;
 
 public:
     BooleanLiteral(bool value);
+    std::shared_ptr<const Object> eval(Driver& driver) override;
     void print(std::ostream& out, int indent) const override;
     ~BooleanLiteral() override;
 };

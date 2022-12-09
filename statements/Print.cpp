@@ -1,4 +1,6 @@
 #include "statements/Print.h"
+#include "objects/StringObject.h"
+#include <iostream>
 #include <string>
 
 Print::Print(std::vector<std::unique_ptr<Expression>> arguments,
@@ -19,7 +21,14 @@ void Print::print(std::ostream& out, int indent) const {
 }
 
 void Print::exec(Driver& driver) {
-    // TODO: implement
+    for (const auto& argument : arguments) {
+        auto value = argument->eval(driver);
+        auto casted = value->to_string();
+        std::cout << casted->value;
+    }
+    if (!suppress_newline) {
+        std::cout << std::endl;
+    }
 }
 
 Print::~Print() = default;

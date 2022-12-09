@@ -2,17 +2,14 @@
 #define LOLBISON_EXPRESSIONS_EXPRESSION_H_
 
 #include "AstNode.h"
-#include "objects/Object.h"
-#include "objects/NilObject.h"
 #include <memory>
 
+class Object;
 class Driver;
 
 class Expression : public AstNode {
 public:
-    std::shared_ptr<const Object> eval(Driver& driver) { // TODO: make pure virtual
-        return std::make_shared<const NilObject>();
-    }
+    virtual std::shared_ptr<const Object> eval(Driver& driver) = 0;
     virtual ~Expression() {}
 };
 

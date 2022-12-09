@@ -1,4 +1,5 @@
 #include "expressions/binary_ops/BinaryOp.h"
+#include "driver.hh"
 
 void BinaryOp::print_binary_op(const std::string& class_name, std::ostream& out,
                                int indent) const {
@@ -18,4 +19,8 @@ void BinaryOp::init_args(std::unique_ptr<Expression> lhs,
                          std::unique_ptr<Expression> rhs) {
     this->lhs = std::move(lhs);
     this->rhs = std::move(rhs);
+}
+
+std::shared_ptr<const Object> BinaryOp::eval(Driver& driver) {
+    return lhs->eval(driver); // TODO: make pure virtual
 }

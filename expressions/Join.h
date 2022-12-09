@@ -6,11 +6,15 @@
 #include <ostream>
 #include <vector>
 
+class Object;
+class Driver;
+
 class Join : public Expression {
     std::vector<std::unique_ptr<Expression>> arguments;
 
 public:
     Join(std::vector<std::unique_ptr<Expression>> arguments);
+    std::shared_ptr<const Object> eval(Driver& driver) override;
     void print(std::ostream& out, int indent) const override;
     ~Join() override;
 };

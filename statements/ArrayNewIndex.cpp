@@ -1,4 +1,5 @@
 #include "statements/ArrayNewIndex.h"
+#include "objects/NumberObject.h"
 #include "driver.hh"
 #include <stdexcept>
 
@@ -25,8 +26,19 @@ void ArrayNewIndex::exec(Driver& driver) {
     if (driver.arrays.find(array_name) == driver.arrays.end()) {
         throw std::runtime_error("Array " + array_name + " does not exist");
     }
-    auto array = driver.arrays[array_name];
-    // TODO check if index is int
+    auto& array = driver.arrays[array_name];
+    std::shared_ptr<const Object> index_value = index->eval(driver);
+    auto index_number =
+        std::dynamic_pointer_cast<const NumberObject>(index_value);
+    if (!index_number) {
+        throw std::runtime_error("Array index must be a number");
+    }
+    int index_int = index_number->value;
+    if (array.find(index_int) != array.end()) {
+        throw std::runtime_error("Array index " +
+            std::to_string(index_int) + " already exists");
+    }
+    array[index_int] = value->eval(driver);
 }
 
 ArrayNewIndex::~ArrayNewIndex() = default;

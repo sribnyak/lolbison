@@ -6,6 +6,9 @@
 #include <ostream>
 #include <string>
 
+class Object;
+class Driver;
+
 class BinaryOp : public Expression {
 protected:
     std::unique_ptr<Expression> lhs;
@@ -18,6 +21,7 @@ public:
     BinaryOp();
     void init_args(std::unique_ptr<Expression> lhs,
                    std::unique_ptr<Expression> rhs);
+    std::shared_ptr<const Object> eval(Driver& driver) override; // TODO: make pure virtual
     virtual ~BinaryOp() {}
 };
 

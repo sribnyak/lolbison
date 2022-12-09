@@ -4,11 +4,15 @@
 #include "expressions/Expression.h"
 #include <ostream>
 
+class Object;
+class Driver;
+
 class NumberLiteral : public Expression {
     int value;
 
 public:
     NumberLiteral(int value);
+    std::shared_ptr<const Object> eval(Driver& driver) override;
     void print(std::ostream& out, int indent) const override;
     ~NumberLiteral() override;
 };
