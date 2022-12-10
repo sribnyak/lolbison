@@ -16,12 +16,9 @@ private:
 public:
     std::map<std::string, std::shared_ptr<const Object>> variables;
     std::map<std::string, std::map<int, std::shared_ptr<const Object>>> arrays;
-    int result;
     std::string file;
 
-    bool trace_parsing;
-    bool trace_scanning;
-    bool location_debug;
+    bool parse_only;
     yy::location location;
 
     Scanner scanner;
@@ -32,6 +29,8 @@ public:
 
     Driver();
     int parse(const std::string& f);
+    int evaluate();
+    int execute(const std::string& f);
     void scan_begin();
     void scan_end();
 };

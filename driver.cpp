@@ -4,9 +4,7 @@
 #include <iostream>
 
 Driver::Driver()
-    : trace_parsing(false),
-      trace_scanning(false),
-      location_debug(false),
+    : parse_only(false),
       scanner(*this),
       parser(scanner, *this) {
     variables["IT"] = std::make_shared<const NilObject>();
@@ -17,28 +15,38 @@ int Driver::parse(const std::string& f) {
     // initialize location positions
     location.initialize(&file);
     scan_begin();
-    parser.set_debug_level(trace_parsing);
-    parser();
-
-    if (program) {
-        try {
-            program->exec(*this);
-            result = 0;
-        } catch (const std::exception& e) {
-            std::cerr << e.what() << std::endl;
-            result = 1;
-        }
-    }
-
+    int res = parser();
     scan_end();
-    return result;
+    return res;
+}
+
+int Driver::evaluate() {
+    if (!program) return 1;
+    try {
+        program->exec(*this);
+        return 0;
+    } catch (std::exception& e) {
+        std::cerr << e.what() << std::endl;
+        return 1;
+    }
+}
+
+int Driver::execute(const std::string& f) {
+    int res = parse(f);
+    if (res != 0) {
+        return res;
+    }
+    if (parse_only) {
+        program->print(std::cout, 0);
+        std::cout << std::endl;
+        return 0;
+    }
+    return evaluate();
 }
 
 void Driver::scan_begin() {
-    scanner.set_debug(trace_scanning);
     if (!(file.empty() || file == "-")) {
         stream.open(file);
-        std::cerr << "File name is " << file << std::endl;
 
         // Restart scanner resetting buffer!
         scanner.yyrestart(&stream);

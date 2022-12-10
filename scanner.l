@@ -24,9 +24,6 @@
   );
 
   void Scanner::UpdateLocation() {
-    if (driver.location_debug) {
-        std::cerr << "Action called " << driver.location << std::endl;
-    }
     driver.location.columns(yyleng);
   }
 %}
@@ -49,26 +46,10 @@ blank [ \t\r]
 %{
   // A handy shortcut to the location held by the driver.
   yy::location& loc = driver.location;
-  if (driver.location_debug) {
-  // Code run each time yylex is called.
-    std::cerr << "BEFORE " << loc << std::endl;
-  }
-  // loc.step();
-  if (driver.location_debug) {
-    std::cerr << "AFTER " <<  loc << std::endl;
-  }
 %}
 
-<INITIAL>{blank}+ {
-    if (driver.location_debug) {
-        std::cerr << "Blank matched" << std::endl;
-    }
-    // loc.step();
-}
+<INITIAL>{blank}+ {}
 <INITIAL>\n+     {
-    if (driver.location_debug) {
-        std::cerr << "EOL called" << std::endl;
-    }
     loc.lines(yyleng);
     loc.step();
     return yy::parser::make_EOL(loc);

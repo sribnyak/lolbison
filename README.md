@@ -12,16 +12,19 @@ $ make
 $ ./lolbison {{path/to/file.lol}}
 ```
 
+Use flag `-p` to output the abstract syntax tree instead of interpreting.
+
 ## Implemented functionality
 
 - Types: NUMBR (int), YARN (string), TROOF (bool) and NOOB (nil)
 - Binary math operators
 - Boolean operators
-- VISIBLE (print to stdout)
 - if-then-else statement (without MEBBE)
 - Loops
-- Arrays (reduced functionality)
+- VISIBLE (print to stdout)
+- SMOOSH (string concatenation)
 - ENUF (as break in a loop, as exit outside loops)
+- Arrays (reduced functionality)
 
 ## The difference from [lolcode specification v1.2](https://github.com/justinmeza/lolcode-spec/blob/master/v1.2/lolcode-spec-v1.2.md)
 

@@ -155,9 +155,6 @@
 %nterm <std::unique_ptr<BinaryOp>> binary_op_name
 %nterm <std::unique_ptr<BinaryOp>> math_func
 
-// Prints output in parsing option for debugging location terminal
-// %printer { yyo << $$; } <*>;
-
 %%
 
 %start program;
