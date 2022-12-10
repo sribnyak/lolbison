@@ -4,7 +4,6 @@
 /cmake-build*/
 /.clang-format
 
-/location.hh
 /parser.cpp
 /parser.gv
 /parser.hh

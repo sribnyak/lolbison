@@ -20,7 +20,6 @@ public:
     std::string file;
 
     bool parse_only;
-    yy::location location;
 
     Scanner scanner;
     yy::parser parser;

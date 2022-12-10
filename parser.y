@@ -60,7 +60,6 @@
 
 %code {
     #include "driver.hh"
-    #include "location.hh"
 
     /* Redefine parser to use our function from scanner */
     static yy::parser::symbol_type yylex(Scanner &scanner) {
@@ -72,8 +71,6 @@
 
 %parse-param { Scanner &scanner }
 %parse-param { Driver &driver }
-
-%locations
 
 %define api.token.prefix {TOK_}
 // token name in variable
@@ -226,7 +223,7 @@ if_then: "O" "RLY?" EOL "YA" "RLY" EOL statements "OIC" EOL {
 
 loop: "IM" "IN" "YR" IDENTIFIER loop_head EOL statements "IM" "OUTTA" "YR" IDENTIFIER EOL {
         if ($4 != $11) {
-            yy::parser::error(driver.location, "loop name mismatch: " + $4 + " != " + $11);
+            yy::parser::error("loop name mismatch: " + $4 + " != " + $11);
             YYABORT;
         }
         $$ = std::make_unique<Loop>($4, std::move($5), std::move($7));
@@ -288,6 +285,6 @@ math_func:
 
 %%
 
-void yy::parser::error(const location_type& l, const std::string& m) {
-    std::cerr << l << ": " << m << '\n';
+void yy::parser::error(const std::string& m) {
+    std::cerr << m << '\n';
 }

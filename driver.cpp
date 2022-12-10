@@ -13,8 +13,6 @@ Driver::Driver()
 
 int Driver::parse(const std::string& f) {
     file = f;
-    // initialize location positions
-    location.initialize(&file);
     scan_begin();
     int res = parser();
     scan_end();
