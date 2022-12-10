@@ -2,9 +2,9 @@
 #define LOLBISON_STATEMENTS_LOOP_COMPONENTS_LOOP_CONDITION_H_
 
 #include "AstNode.h"
-#include "expressions/Expression.h"
 #include <memory>
 
+class Expression;
 class Driver;
 
 class LoopCondition : public AstNode {

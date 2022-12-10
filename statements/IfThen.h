@@ -2,8 +2,8 @@
 #define LOLBISON_STATEMENTS_IF_THEN_H_
 
 #include "statements/Statement.h"
+#include <iosfwd>
 #include <memory>
-#include <ostream>
 #include <vector>
 
 class Driver;

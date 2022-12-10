@@ -2,6 +2,7 @@
 #define LOLBISON_OBJECTS_BOOLEAN_OBJECT_H_
 
 #include "objects/Object.h"
+#include <memory>
 
 class NumberObject;
 class StringObject;

@@ -2,7 +2,7 @@
 #define LOLBISON_STATEMENTS_LOOP_COMPONENTS_INCREMENT_LOOP_HEAD_H_
 
 #include "statements/loop_components/LoopHead.h"
-#include <ostream>
+#include <iosfwd>
 
 class Driver;
 

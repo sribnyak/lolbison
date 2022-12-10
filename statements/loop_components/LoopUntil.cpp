@@ -3,6 +3,7 @@
 #include "objects/BooleanObject.h"
 #include "driver.hh"
 #include <memory>
+#include <ostream>
 #include <string>
 
 void LoopUntil::print(std::ostream& out, int indent) const {

@@ -1,5 +1,6 @@
 #include "statements/ArrayDecl.h"
 #include "driver.hh"
+#include <ostream>
 #include <stdexcept>
 
 ArrayDecl::ArrayDecl(const std::string& name) : name(name) {}

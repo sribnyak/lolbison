@@ -1,5 +1,6 @@
 #include "expressions/Identifier.h"
 #include "driver.hh"
+#include <ostream>
 
 Identifier::Identifier(const std::string& name) : name(name) {}
 

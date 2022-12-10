@@ -2,10 +2,10 @@
 #define LOLBISON_STATEMENTS_EXPR_STATEMENT_H_
 
 #include "statements/Statement.h"
-#include "expressions/Expression.h"
+#include <iosfwd>
 #include <memory>
-#include <ostream>
 
+class Expression;
 class Driver;
 
 class ExprStatement : public Statement {

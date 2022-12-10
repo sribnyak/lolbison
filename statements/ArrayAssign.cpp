@@ -1,6 +1,8 @@
 #include "statements/ArrayAssign.h"
+#include "expressions/Expression.h"
 #include "objects/NumberObject.h"
 #include "driver.hh"
+#include <ostream>
 #include <stdexcept>
 
 ArrayAssign::ArrayAssign(const std::string& array_name,

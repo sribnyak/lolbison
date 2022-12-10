@@ -2,7 +2,7 @@
 #define LOLBISON_EXPRESSIONS_BINARY_OPS_BINARY_OR_H_
 
 #include "expressions/binary_ops/BinaryOp.h"
-#include <ostream>
+#include <iosfwd>
 
 class Object;
 class Driver;

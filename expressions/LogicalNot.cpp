@@ -1,6 +1,6 @@
 #include "expressions/LogicalNot.h"
-#include "objects/Object.h"
 #include "objects/BooleanObject.h"
+#include <ostream>
 #include <string>
 
 LogicalNot::LogicalNot(std::unique_ptr<Expression> operand)

@@ -2,11 +2,11 @@
 #define LOLBISON_STATEMENTS_PRINT_H_
 
 #include "statements/Statement.h"
-#include "expressions/Expression.h"
+#include <iosfwd>
 #include <memory>
-#include <ostream>
 #include <vector>
 
+class Expression;
 class Driver;
 
 class Print : public Statement {

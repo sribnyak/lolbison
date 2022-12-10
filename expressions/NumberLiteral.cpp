@@ -1,6 +1,7 @@
 #include "expressions/NumberLiteral.h"
 #include "objects/NumberObject.h"
 #include <memory>
+#include <ostream>
 
 NumberLiteral::NumberLiteral(int value) : value(value) {}
 

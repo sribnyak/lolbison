@@ -2,12 +2,12 @@
 #define LOLBISON_PROGRAM_H_
 
 #include "AstNode.h"
-#include "statements/Statement.h"
+#include <iosfwd>
 #include <memory>
-#include <ostream>
 #include <string>
 #include <vector>
 
+class Statement;
 class Driver;
 
 class Program : public AstNode {

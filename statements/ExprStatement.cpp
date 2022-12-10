@@ -1,6 +1,8 @@
 #include "statements/ExprStatement.h"
+#include "expressions/Expression.h"
 #include "driver.hh"
 #include <string>
+#include <ostream>
 
 ExprStatement::ExprStatement(std::unique_ptr<Expression> expression)
     : expression(std::move(expression)) {}

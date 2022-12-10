@@ -2,7 +2,7 @@
 #define LOLBISON_EXPRESSIONS_IDENTIFIER_H_
 
 #include "expressions/Expression.h"
-#include <ostream>
+#include <iosfwd>
 #include <string>
 
 class Object;

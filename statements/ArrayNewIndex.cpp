@@ -1,6 +1,8 @@
 #include "statements/ArrayNewIndex.h"
+#include "expressions/Expression.h"
 #include "objects/NumberObject.h"
 #include "driver.hh"
+#include <ostream>
 #include <stdexcept>
 
 ArrayNewIndex::ArrayNewIndex(const std::string& array_name,

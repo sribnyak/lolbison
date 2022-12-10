@@ -2,7 +2,7 @@
 #define LOLBISON_STATEMENTS_LOOP_COMPONENTS_LOOP_UNTIL_H_
 
 #include "statements/loop_components/LoopCondition.h"
-#include <ostream>
+#include <iosfwd>
 
 class Driver;
 

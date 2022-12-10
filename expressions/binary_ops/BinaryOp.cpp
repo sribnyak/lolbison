@@ -1,4 +1,5 @@
 #include "expressions/binary_ops/BinaryOp.h"
+#include <ostream>
 
 void BinaryOp::print_binary_op(const std::string& class_name, std::ostream& out,
                                int indent) const {

@@ -3,8 +3,8 @@
 
 #include "statements/Statement.h"
 #include "statements/loop_components/LoopHead.h"
+#include <iosfwd>
 #include <memory>
-#include <ostream>
 #include <string>
 #include <vector>
 

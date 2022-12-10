@@ -3,6 +3,7 @@
 #include "driver.hh"
 #include <limits>
 #include <memory>
+#include <ostream>
 #include <string>
 
 void DecrementLoopHead::print(std::ostream& out, int indent) const {

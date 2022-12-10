@@ -2,11 +2,11 @@
 #define LOLBISON_STATEMENTS_ARRAY_NEW_INDEX_H_
 
 #include "statements/Statement.h"
-#include "expressions/Expression.h"
 #include <memory>
-#include <ostream>
+#include <iosfwd>
 #include <string>
 
+class Expression;
 class Driver;
 
 class ArrayNewIndex : public Statement {

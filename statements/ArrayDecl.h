@@ -2,7 +2,7 @@
 #define LOLBISON_STATEMENTS_ARRAY_DECL_H_
 
 #include "statements/Statement.h"
-#include <ostream>
+#include <iosfwd>
 #include <string>
 
 class Driver;

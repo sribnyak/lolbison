@@ -2,8 +2,8 @@
 #define LOLBISON_EXPRESSIONS_LOGICAL_NOT_H_
 
 #include "expressions/Expression.h"
+#include <iosfwd>
 #include <memory>
-#include <ostream>
 
 class Object;
 class Driver;

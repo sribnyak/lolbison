@@ -1,7 +1,7 @@
 #ifndef LOLBISON_AST_NODE_H_
 #define LOLBISON_AST_NODE_H_
 
-#include <ostream>
+#include <iosfwd>
 
 const int INDENT_WIDTH = 4;
 

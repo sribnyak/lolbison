@@ -2,8 +2,8 @@
 #define LOLBISON_EXPRESSIONS_BINARY_OPS_BINARY_OP_H_
 
 #include "expressions/Expression.h"
+#include <iosfwd>
 #include <memory>
-#include <ostream>
 #include <string>
 
 class Object;

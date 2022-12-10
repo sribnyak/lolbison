@@ -2,7 +2,7 @@
 #define LOLBISON_EXPRESSIONS_BOOLEAN_LITERAL_H_
 
 #include "expressions/Expression.h"
-#include <ostream>
+#include <iosfwd>
 
 class Object;
 class Driver;

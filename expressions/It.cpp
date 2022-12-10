@@ -1,5 +1,6 @@
 #include "expressions/It.h"
 #include "driver.hh"
+#include <ostream>
 
 std::shared_ptr<const Object> It::eval(Driver& driver) {
     return driver.variables.at("IT");

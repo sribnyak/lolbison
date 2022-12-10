@@ -1,6 +1,7 @@
 #include "expressions/BooleanLiteral.h"
 #include "objects/BooleanObject.h"
 #include <memory>
+#include <ostream>
 
 BooleanLiteral::BooleanLiteral(bool value) : value(value) {}
 

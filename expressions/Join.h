@@ -2,8 +2,8 @@
 #define LOLBISON_EXPRESSIONS_JOIN_H_
 
 #include "expressions/Expression.h"
+#include <iosfwd>
 #include <memory>
-#include <ostream>
 #include <vector>
 
 class Object;

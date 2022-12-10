@@ -2,7 +2,7 @@
 #define LOLBISON_EXPRESSIONS_IT_H_
 
 #include "expressions/Expression.h"
-#include <ostream>
+#include <iosfwd>
 
 class Object;
 class Driver;

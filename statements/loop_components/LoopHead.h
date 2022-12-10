@@ -4,7 +4,6 @@
 #include "AstNode.h"
 #include "statements/loop_components/LoopCondition.h"
 #include <memory>
-#include <ostream>
 #include <string>
 
 class Driver;

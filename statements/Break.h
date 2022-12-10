@@ -2,7 +2,7 @@
 #define LOLBISON_STATEMENTS_BREAK_H_
  
 #include "statements/Statement.h"
-#include <ostream>
+#include <iosfwd>
 
 class Driver;
 

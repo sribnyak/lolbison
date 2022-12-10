@@ -3,6 +3,7 @@
 #include "statements/loop_components/LoopCondition.h"
 #include "BreakIndicator.h"
 #include "driver.hh"
+#include <ostream>
 
 Loop::Loop(const std::string& name, std::unique_ptr<LoopHead> head,
            std::vector<std::unique_ptr<Statement>> statements)

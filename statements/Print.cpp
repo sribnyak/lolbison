@@ -1,4 +1,5 @@
 #include "statements/Print.h"
+#include "expressions/Expression.h"
 #include "objects/StringObject.h"
 #include <iostream>
 #include <string>

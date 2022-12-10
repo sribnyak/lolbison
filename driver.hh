@@ -4,10 +4,11 @@
 #include <string>
 #include <map>
 #include <memory>
-#include "objects/Object.h"
-#include "Program.h"
 #include "scanner.h"
 #include "parser.hh"
+
+class Object;
+class Program;
 
 class Driver {
 private:

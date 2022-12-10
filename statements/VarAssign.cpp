@@ -1,5 +1,7 @@
 #include "statements/VarAssign.h"
+#include "expressions/Expression.h"
 #include "driver.hh"
+#include <ostream>
 #include <stdexcept>
 
 VarAssign::VarAssign(const std::string& name, std::unique_ptr<Expression> value)

@@ -1,6 +1,7 @@
 #include "expressions/ArrayAccess.h"
 #include "objects/NumberObject.h"
 #include "driver.hh"
+#include <ostream>
 #include <stdexcept>
 
 ArrayAccess::ArrayAccess(const std::string& array_name,

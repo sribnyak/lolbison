@@ -1,5 +1,7 @@
 #include "Program.h"
+#include "statements/Statement.h"
 #include "BreakIndicator.h"
+#include <ostream>
 
 Program::Program(const std::string& version,
                  std::vector<std::unique_ptr<Statement>> statements)

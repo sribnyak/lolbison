@@ -1,6 +1,7 @@
 #include "statements/IfThen.h"
 #include "objects/BooleanObject.h"
 #include "driver.hh"
+#include <ostream>
 #include <string>
 
 IfThen::IfThen(std::vector<std::unique_ptr<Statement>> true_statements)

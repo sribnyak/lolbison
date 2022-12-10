@@ -1,5 +1,6 @@
 #include "expressions/Join.h"
 #include "objects/StringObject.h"
+#include <ostream>
 #include <string>
 
 Join::Join(std::vector<std::unique_ptr<Expression>> arguments)

@@ -1,5 +1,6 @@
 #include "driver.hh"
 #include "objects/NilObject.h"
+#include "Program.h"
 #include <exception>
 #include <iostream>
 

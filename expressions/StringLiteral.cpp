@@ -1,6 +1,7 @@
 #include "expressions/StringLiteral.h"
 #include "objects/StringObject.h"
 #include <memory>
+#include <ostream>
 
 StringLiteral::StringLiteral(const std::string& value) : value(value) {}
 

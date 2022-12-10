@@ -2,11 +2,11 @@
 #define LOLBISON_STATEMENTS_VAR_DECL_H_
 
 #include "statements/Statement.h"
-#include "expressions/Expression.h"
+#include <iosfwd>
 #include <memory>
-#include <ostream>
 #include <string>
 
+class Expression;
 class Driver;
 
 class VarDecl : public Statement {
