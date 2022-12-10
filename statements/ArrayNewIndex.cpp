@@ -34,10 +34,6 @@ void ArrayNewIndex::exec(Driver& driver) {
         throw std::runtime_error("Array index must be a number");
     }
     int index_int = index_number->value;
-    if (array.find(index_int) != array.end()) {
-        throw std::runtime_error("Array index " +
-            std::to_string(index_int) + " already exists");
-    }
     array[index_int] = value->eval(driver);
 }
 

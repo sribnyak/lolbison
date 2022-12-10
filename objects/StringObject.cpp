@@ -46,4 +46,9 @@ std::shared_ptr<const StringObject> StringObject::to_string() const {
     return shared_from_this();
 }
 
+bool StringObject::equals(std::shared_ptr<const Object> other) const {
+    auto other_string = std::dynamic_pointer_cast<const StringObject>(other);
+    return other_string && other_string->value == value;
+}
+
 StringObject::~StringObject() = default;

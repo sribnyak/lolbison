@@ -21,7 +21,7 @@ public:
     BinaryOp();
     void init_args(std::unique_ptr<Expression> lhs,
                    std::unique_ptr<Expression> rhs);
-    std::shared_ptr<const Object> eval(Driver& driver) override; // TODO: make pure virtual
+    virtual std::shared_ptr<const Object> eval(Driver& driver) = 0;
     virtual ~BinaryOp() {}
 };
 

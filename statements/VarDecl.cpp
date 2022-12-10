@@ -1,7 +1,6 @@
 #include "statements/VarDecl.h"
 #include "objects/NilObject.h"
 #include "driver.hh"
-#include <stdexcept>
 
 VarDecl::VarDecl(const std::string& name) : name(name), value() {}
 
@@ -22,9 +21,6 @@ void VarDecl::print(std::ostream& out, int indent) const {
 }
 
 void VarDecl::exec(Driver& driver) {
-    if (driver.variables.find(name) != driver.variables.end()) {
-        throw std::runtime_error("Variable " + name + " already exists");
-    }
     if (value) {
         driver.variables[name] = value->eval(driver);
     } else {

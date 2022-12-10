@@ -14,4 +14,8 @@ std::shared_ptr<const StringObject> NilObject::to_string() const {
     throw std::runtime_error("Cannot implicitly cast nil to string");
 }
 
+bool NilObject::equals(std::shared_ptr<const Object> other) const {
+    return std::dynamic_pointer_cast<const NilObject>(other) != nullptr;
+}
+
 NilObject::~NilObject() = default;

@@ -4,10 +4,14 @@
 #include "expressions/binary_ops/BinaryOp.h"
 #include <ostream>
 
+class Object;
+class Driver;
+
 class BinaryMax : public BinaryOp {
 public:
     using BinaryOp::BinaryOp;
     void print(std::ostream& out, int indent) const override;
+    std::shared_ptr<const Object> eval(Driver& driver) override;
     ~BinaryMax() override;
 };
 

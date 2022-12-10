@@ -1,6 +1,6 @@
 #include "objects/BooleanObject.h"
 #include "objects/NumberObject.h"
-#include "objects/StringObject.h"
+#include <stdexcept>
 
 BooleanObject::BooleanObject(bool value) : value(value) {}
 
@@ -13,7 +13,12 @@ std::shared_ptr<const NumberObject> BooleanObject::to_number() const {
 }
 
 std::shared_ptr<const StringObject> BooleanObject::to_string() const {
-    return std::make_shared<const StringObject>(value ? "WIN" : "FAIL");
+    throw std::runtime_error("Cannot implicitly cast boolean to string");
+}
+
+bool BooleanObject::equals(std::shared_ptr<const Object> other) const {
+    auto other_boolean = std::dynamic_pointer_cast<const BooleanObject>(other);
+    return other_boolean && other_boolean->value == value;
 }
 
 BooleanObject::~BooleanObject() = default;
