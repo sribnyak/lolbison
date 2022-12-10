@@ -4,10 +4,13 @@
 #include "statements/loop_components/LoopCondition.h"
 #include <ostream>
 
+class Driver;
+
 class LoopUntil : public LoopCondition {
 public:
     using LoopCondition::LoopCondition;
     void print(std::ostream& out, int indent) const override;
+    bool check(Driver& driver) override;
     ~LoopUntil() override;
 };
 

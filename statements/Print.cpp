@@ -21,7 +21,7 @@ void Print::print(std::ostream& out, int indent) const {
 }
 
 void Print::exec(Driver& driver) {
-    for (const auto& argument : arguments) {
+    for (auto& argument : arguments) {
         auto value = argument->eval(driver);
         auto casted = value->to_string();
         std::cout << casted->value;

@@ -7,6 +7,8 @@
 #include <ostream>
 #include <string>
 
+class Driver;
+
 class LoopHead : public AstNode {
 protected:
     std::string counter;
@@ -14,6 +16,9 @@ protected:
 
 public:
     LoopHead(const std::string& counter, std::unique_ptr<LoopCondition> condition);
+    bool check_condition(Driver& driver);
+    void init(Driver& driver);
+    virtual void step(Driver& driver) = 0;
     virtual ~LoopHead() {}
 };
 

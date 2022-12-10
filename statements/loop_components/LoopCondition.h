@@ -5,12 +5,15 @@
 #include "expressions/Expression.h"
 #include <memory>
 
+class Driver;
+
 class LoopCondition : public AstNode {
 protected:
     std::unique_ptr<Expression> condition;
 
 public:
     LoopCondition(std::unique_ptr<Expression> condition);
+    virtual bool check(Driver& driver) = 0;
     virtual ~LoopCondition() {}
 };
 

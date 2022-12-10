@@ -1,4 +1,6 @@
 #include "statements/IfThen.h"
+#include "objects/BooleanObject.h"
+#include "driver.hh"
 #include <string>
 
 IfThen::IfThen(std::vector<std::unique_ptr<Statement>> true_statements)
@@ -29,7 +31,16 @@ void IfThen::print(std::ostream& out, int indent) const {
 }
 
 void IfThen::exec(Driver& driver) {
-    // TODO: implement
+    bool condition = driver.variables["IT"]->to_boolean()->value;
+    if (condition) {
+        for (auto& statement : true_statements) {
+            statement->exec(driver);
+        }
+    } else {
+        for (auto& statement : false_statements) {
+            statement->exec(driver);
+        }
+    }
 }
 
 IfThen::~IfThen() = default;

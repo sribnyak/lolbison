@@ -6,7 +6,11 @@ Join::Join(std::vector<std::unique_ptr<Expression>> arguments)
     : arguments(std::move(arguments)) {}
 
 std::shared_ptr<const Object> Join::eval(Driver& driver) {
-    return std::make_shared<const StringObject>(""); // TODO: implement
+    std::string result;
+    for (auto& argument : arguments) {
+        result += argument->eval(driver)->to_string()->value;
+    }
+    return std::make_shared<const StringObject>(result);
 }
 
 void Join::print(std::ostream& out, int indent) const {

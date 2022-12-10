@@ -18,20 +18,20 @@ int Driver::parse(const std::string& f) {
     location.initialize(&file);
     scan_begin();
     parser.set_debug_level(trace_parsing);
-    int res = parser();
+    parser();
 
-    result = 1;
     if (program) {
         try {
             program->exec(*this);
             result = 0;
         } catch (const std::exception& e) {
             std::cerr << e.what() << std::endl;
+            result = 1;
         }
     }
 
     scan_end();
-    return res;
+    return result;
 }
 
 void Driver::scan_begin() {
