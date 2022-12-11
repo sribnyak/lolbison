@@ -1,0 +1,6 @@
+#ifndef LOLBISON_BREAK_INDICATOR_H_
+#define LOLBISON_BREAK_INDICATOR_H_
+
+class BreakIndicator {};
+
+#endif  // LOLBISON_BREAK_INDICATOR_H_

@@ -1,0 +1,112 @@
+/* Parser part (White spaces are ignored after tokenizing) */
+
+program: empty_lines "HAI" version eol statements "KTHXBYE" empty_lines;
+
+empty_lines:
+    /* empty */
+    | empty_lines eol;
+
+statements:
+    /* empty */
+    | statements statement;
+
+statement:
+    var_decl
+    | var_assign
+    | array_decl
+    | array_new_index
+    | array_assign
+    | print
+    | if_then
+    | loop
+    | "ENUF" eol /*break or exit*/
+    | expr eol
+    | eol;
+
+var_decl:
+    "I" "HAS" "A" identifier eol
+    | "I" "HAS" "A" identifier "ITZ" expr eol;
+
+var_assign: identifier "R" expr eol;
+
+array_decl: "I" "HAS" "A" identifier "ITZ" "A" "BUKKIT" eol;
+
+array_new_index: identifier "HAS" "A" "SRS" expr "ITZ" expr eol;
+
+array_assign: identifier "'Z" "SRS" expr "R" expr eol;
+
+array_access: identifier "'Z" "SRS" expr;
+
+print:
+    "VISIBLE" many_args eol
+    | "VISIBLE" many_args "!" eol;
+
+join: "SMOOSH" many_args "MKAY";
+
+many_args:
+    expr  /* left recursion - right recursion uses more space */
+    | many_args expr
+    | many_args "AN" expr;
+
+if_then: "O" "RLY?" eol "YA" "RLY" eol statements "OIC" eol
+    | "O" "RLY?" eol "YA" "RLY" eol statements "NO" "WAI" eol statements "OIC" eol;
+
+loop:
+    loop_enter loop_operation loop_condition eol statements loop_leave eol
+    | loop_enter eol statements loop_leave eol;
+
+loop_enter: "IM" "IN" "YR" identifier;
+
+loop_operation: "UPPIN" "YR" identifier | "NERFIN" "YR" identifier;
+
+loop_condition:
+    /* empty */
+    | "TIL" expr
+    | "WILE" expr;
+
+loop_leave: "IM" "OUTTA" "YR" identifier;
+
+expr:
+    number
+    | string
+    | boolean
+    | "IT"
+    | identifier
+    | logical_not
+    | binary_op
+    | array_access
+    | join;
+
+boolean: "WIN" | "FAIL";
+
+logical_not: "NOT" expr;
+
+binary_op:
+    binary_op_name expr "AN" expr
+    | binary_op_name expr expr;
+
+binary_op_name:
+    math_func "OF"
+    | "BOTH" "OF"
+    | "EITHER" "OF"
+    | "WON" "OF"
+    | "BOTH" "SAEM"
+    | "DIFFRINT";
+
+math_func:
+    "SUM"
+    | "DIFF"
+    | "PRODUKT"
+    | "QUOSHUNT"
+    | "MOD"
+    | "BIGGR"
+    | "SMALLR";
+
+
+/* Lexer part */
+
+eol: \n+
+number: num | -num
+version: num.num
+identifier: [a-zA-Z][a-zA-Z0-9_]*
+string: "..."
